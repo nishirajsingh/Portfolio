@@ -40,7 +40,7 @@ function AppIcon({ mouseX, title, icon, href }: {
 }) {
   const ref = useRef<HTMLDivElement>(null)
 
-  const distance = useTransform(mouseX, (val) => {
+  const distance = useTransform(mouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 }
     return val - bounds.x - bounds.width / 2
   })

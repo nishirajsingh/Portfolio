@@ -7,7 +7,7 @@ import { SkillIcon } from './skill-icon'
 interface SkillCardProps {
   title: string
   skills: string[]
-  icon: React.ComponentType<{ className?: string; size?: number }>
+  icon: React.ComponentType<{ className?: string; size?: number | string }>
   color: string
   index: number
 }

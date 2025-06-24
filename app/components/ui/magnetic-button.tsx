@@ -42,7 +42,7 @@ export function MagneticButton({
         'liquid-glass liquid-button hover:scale-105',
         className
       )}
-      {...props}
+      {...(props as any)}
     >
       <span className="relative z-10">{children}</span>
     </motion.button>

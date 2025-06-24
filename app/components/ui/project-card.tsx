@@ -10,7 +10,7 @@ interface ProjectCardProps {
   title: string
   description: string
   tech: string[]
-  icon: React.ComponentType<{ className?: string; size?: number }>
+  icon: React.ComponentType<{ className?: string; size?: number | string }>
   gradient: string
   image?: string
   liveUrl?: string

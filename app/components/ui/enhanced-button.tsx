@@ -75,7 +75,7 @@ const EnhancedButton = forwardRef<HTMLButtonElement, EnhancedButtonProps>(
         }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        {...props}
+        {...(props as any)}
       >
         <span className="relative z-10 flex items-center gap-2">
           {children}
