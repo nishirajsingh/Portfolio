@@ -22,8 +22,8 @@ export function FloatingDock({ items, className }: FloatingDockProps) {
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
-          'flex items-end gap-3 rounded-2xl liquid-glass px-3 py-4 overflow-x-auto scrollbar-hide',
-          'min-h-[100px] w-full',
+          'flex items-end gap-2 rounded-2xl liquid-glass px-2 py-3 overflow-x-auto scrollbar-hide',
+          'min-h-[70px] w-full max-w-xs',
           className
         )}
         style={{
@@ -52,15 +52,15 @@ function AppIcon({ mouseX, title, icon, href }: {
     return val - bounds.x - bounds.width / 2
   })
 
-  const widthSync = useTransform(distance, [-100, 0, 100], [40, 50, 40])
+  const widthSync = useTransform(distance, [-80, 0, 80], [32, 40, 32])
   const width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 })
 
   return (
-    <div className="flex flex-col items-center gap-2 flex-shrink-0">
+    <div className="flex flex-col items-center gap-1 flex-shrink-0">
       <motion.div
         ref={ref}
         style={{ width }}
-        className="aspect-square w-10 rounded-full liquid-glass flex items-center justify-center"
+        className="aspect-square w-8 rounded-full liquid-glass flex items-center justify-center"
       >
         <a
           href={href}
@@ -71,8 +71,8 @@ function AppIcon({ mouseX, title, icon, href }: {
         </a>
       </motion.div>
       
-      <div className="px-2 py-1 rounded-lg backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 shadow-md">
-        <span className="text-xs font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
+      <div className="px-1.5 py-0.5 rounded-md backdrop-blur-xl bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 shadow-md">
+        <span className="text-[10px] font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
           {title}
         </span>
       </div>
