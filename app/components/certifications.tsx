@@ -84,7 +84,7 @@ export function Certifications() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {CERTIFICATIONS.map((cert, index) => (
+          {CERTIFICATIONS.slice(0, 3).map((cert, index) => (
             <motion.div
               key={cert.title}
               initial={{ opacity: 0, y: 50 }}
@@ -173,23 +173,23 @@ export function Certifications() {
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* View More Button */}
         <motion.div
-          className="text-center mt-20"
+          className="text-center mt-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-950/20 dark:to-red-950/20 rounded-3xl p-8 border border-orange-200/30 dark:border-orange-800/30">
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-              Continuous Learning Journey
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              Committed to staying at the forefront of technology through continuous learning and professional development. 
-              Each certification represents a milestone in my journey to master cloud computing and mobile development.
-            </p>
-          </div>
+          <motion.a
+            href="/certifications"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-medium rounded-xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Award className="w-5 h-5" />
+            View All Certifications
+          </motion.a>
         </motion.div>
       </div>
     </section>

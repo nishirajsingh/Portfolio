@@ -26,6 +26,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 /* Apple Liquid Glass Effect */
@@ -257,4 +258,14 @@ body {
 
 .lotus-animation {
   animation: lotus-bloom 4s ease-in-out infinite;
+}
+
+/* Hide Scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

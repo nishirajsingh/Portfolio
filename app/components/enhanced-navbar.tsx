@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Moon, Sun, Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Moon, Sun, User, Zap, FolderOpen, Briefcase, Award, MessageCircle } from 'lucide-react'
 import { useTheme } from './theme-provider'
 import { FloatingDock } from './ui/floating-dock'
 import { MagneticButton } from './ui/magnetic-button'
+import Link from 'next/link'
 
 const NAVIGATION_ITEMS = [
   { name: 'About', href: '#about' },
@@ -15,11 +16,13 @@ const NAVIGATION_ITEMS = [
   { name: 'Contact', href: '#contact' },
 ]
 
-const SOCIAL_ITEMS = [
-  { title: 'GitHub', icon: <Github size={20} />, href: 'https://github.com/nishirajsingh' },
-  { title: 'LinkedIn', icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/in/nishiraj-singh-panwar/' },
-  { title: 'Twitter', icon: <Twitter size={20} />, href: 'http://twitter.com/nishirajpanwar' },
-  { title: 'Email', icon: <Mail size={20} />, href: 'mailto:nishirajsingh2005@gmail.com' },
+const NAVIGATION_DOCK_ITEMS = [
+  { title: 'About', icon: <User size={20} />, href: '#about' },
+  { title: 'Skills', icon: <Zap size={20} />, href: '#skills' },
+  { title: 'Projects', icon: <FolderOpen size={20} />, href: '#projects' },
+  { title: 'Experience', icon: <Briefcase size={20} />, href: '#experience' },
+  { title: 'Certifications', icon: <Award size={20} />, href: '#certifications' },
+  { title: 'Contact', icon: <MessageCircle size={20} />, href: '#contact' },
 ]
 
 export function EnhancedNavbar() {
@@ -37,9 +40,9 @@ export function EnhancedNavbar() {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'liquid-glass backdrop-blur-xl border-b border-white/10' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="font-bold text-xl gradient-text">
+            <Link href="/" className="font-bold text-xl gradient-text hover:scale-105 transition-transform duration-200">
               Nishiraj Singh Panwar
-            </div>
+            </Link>
             
             <div className="hidden md:flex space-x-8">
               {NAVIGATION_ITEMS.map((item) => (
@@ -64,8 +67,8 @@ export function EnhancedNavbar() {
         </div>
       </nav>
 
-      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40">
-        <FloatingDock items={SOCIAL_ITEMS} />
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
+        <FloatingDock items={NAVIGATION_DOCK_ITEMS} />
       </div>
     </>
   )

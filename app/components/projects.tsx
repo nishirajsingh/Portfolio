@@ -87,7 +87,7 @@ export function Projects() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 auto-rows-fr">
-          {PROJECTS.map((project, index) => (
+          {PROJECTS.slice(0, 3).map((project, index) => (
             <ProjectCard
               key={project.title}
               {...project}
@@ -95,25 +95,22 @@ export function Projects() {
           ))}
         </div>
         
-        {/* Call to action */}
+        {/* View More Button */}
         <motion.div
-          className="text-center mt-20"
+          className="text-center mt-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Interested in collaborating on a project?
-          </p>
           <motion.a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            href="/projects"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <Sparkles className="w-5 h-5" />
-            Let's Work Together
+            View All Projects
           </motion.a>
         </motion.div>
       </div>

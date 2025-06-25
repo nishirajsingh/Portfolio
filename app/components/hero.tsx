@@ -9,7 +9,7 @@ import { EnhancedButton } from './ui/enhanced-button'
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-x-hidden pt-20">
 
       
       <div className="relative max-w-7xl mx-auto text-center z-10">
