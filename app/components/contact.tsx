@@ -82,12 +82,12 @@ export function Contact() {
                     href={contact.href}
                     className="flex items-center gap-4 p-4 bg-white/50 dark:bg-black/20 rounded-xl hover:scale-105 transition-transform duration-200"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <div className="w-12 h-12 min-w-[3rem] bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
                       <contact.icon className="w-6 h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm text-gray-600 dark:text-gray-400">{contact.label}</p>
-                      <p className="font-semibold">{contact.value}</p>
+                      <p className="font-semibold break-words">{contact.value}</p>
                     </div>
                   </a>
                 ))}
