@@ -1,8 +1,7 @@
 'use client'
 
 import { 
-  SiAmazonaws, 
-  SiMicrosoftazure, 
+  SiAmazonwebservices,
   SiGooglecloud, 
   SiDocker, 
   SiKubernetes, 
@@ -23,11 +22,12 @@ import {
   SiGit,
   SiTerraform
 } from 'react-icons/si'
+import { VscAzure }from 'react-icons/vsc'
 import { Database, Smartphone, Code, Wrench } from 'lucide-react'
 
 const skillIcons: Record<string, React.ComponentType<any>> = {
-  'AWS': SiAmazonaws,
-  'Azure': SiMicrosoftazure,
+  'AWS': SiAmazonwebservices,
+  'Azure': VscAzure,
   'Google Cloud': SiGooglecloud,
   'Docker': SiDocker,
   'Kubernetes': SiKubernetes,
