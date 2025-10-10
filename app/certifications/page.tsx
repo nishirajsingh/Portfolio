@@ -17,12 +17,12 @@ const CERTIFICATIONS = [
     status: 'in-progress'
   },
   {
-    title: 'iOS App Development with Swift',
-    issuer: 'Apple Developer Academy',
+    title: 'TensorFlow Developer Certificate',
+    issuer: 'Google',
     date: 'Coming Soon', 
-    credentialId: 'SWIFT-DEV-2024',
+    credentialId: 'TF-DEV-2024',
     link: '#',
-    description: 'Comprehensive iOS development using Swift and modern development practices.',
+    description: 'Machine learning and deep learning using TensorFlow framework and modern AI practices.',
     status: 'in-progress'
   },
   {
@@ -117,7 +117,7 @@ export default function CertificationsPage() {
               transition={{ delay: 0.3 }}
             >
               A comprehensive collection of industry-recognized certifications that validate my expertise 
-              in cloud computing, mobile development, and modern software engineering practices.
+              in cloud computing, AI/ML development, and modern software engineering practices.
             </motion.p>
           </motion.div>
 

@@ -61,7 +61,7 @@ export function Contact() {
             Let's Connect
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Ready to collaborate on your next cloud or iOS project? Let's discuss how we can work together.
+            Ready to collaborate on your next cloud or AI/ML project? Let's discuss how we can work together.
           </p>
         </motion.div>
 

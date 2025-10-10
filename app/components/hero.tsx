@@ -116,11 +116,11 @@ export function Hero() {
               transition={{ delay: 0.8 }}
             >
               <p className="text-xl sm:text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-300 dark:to-gray-100 bg-clip-text text-transparent">
-                Cloud Developer & Swift Developer
+                Cloud Developer & AI/ML Developer
               </p>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
-                Student at Parul University crafting innovative solutions in cloud technologies and iOS development. 
-                Passionate about building scalable applications that make a difference.
+                Student at Parul University crafting innovative solutions in cloud technologies and AI/ML development. 
+                Passionate about building intelligent applications that make a difference.
               </p>
             </motion.div>
           </motion.div>
@@ -130,7 +130,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4 pb-12"
           >
             <EnhancedButton
               variant="gradient"

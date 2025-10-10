@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Cloud, Smartphone, Code, Wrench, Sparkles } from 'lucide-react'
+import { Cloud, Brain, Code, Wrench, Sparkles } from 'lucide-react'
 import { SkillCard } from './ui/skill-card'
 import { TextReveal } from './ui/text-reveal'
 
@@ -13,14 +13,14 @@ const SKILL_CATEGORIES = [
     color: 'bg-gradient-to-br from-blue-500 to-blue-600'
   },
   {
-    title: 'iOS Development',
-    skills: ['Swift', 'SwiftUI', 'UIKit', 'Core Data', 'Xcode', 'App Store'],
-    icon: Smartphone,
+    title: 'AI/ML Technologies',
+    skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenAI API', 'Hugging Face', 'LangChain'],
+    icon: Brain,
     color: 'bg-gradient-to-br from-indigo-500 to-purple-600'
   },
   {
     title: 'Programming Languages',
-    skills: ['Swift', 'Python', 'JavaScript', 'TypeScript', 'Java', 'Go'],
+    skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'Go', 'R'],
     icon: Code,
     color: 'bg-gradient-to-br from-emerald-500 to-teal-600'
   },
@@ -68,7 +68,7 @@ export function Skills() {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            A comprehensive toolkit for building modern cloud and mobile solutions. 
+            A comprehensive toolkit for building modern cloud and AI-powered solutions. 
             Constantly learning and adapting to the latest technologies and best practices.
           </motion.p>
         </motion.div>
@@ -94,8 +94,8 @@ export function Skills() {
           <div className="liquid-glass rounded-3xl p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold mb-4 gradient-text">Always Learning</h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Technology evolves rapidly, and so do I. Currently exploring AI/ML integration, 
-              advanced cloud architectures, and the latest iOS development patterns. 
+              Technology evolves rapidly, and so do I. Currently exploring advanced AI/ML models, 
+              cloud-native architectures, and cutting-edge machine learning frameworks. 
               Passionate about staying at the forefront of innovation.
             </p>
           </div>

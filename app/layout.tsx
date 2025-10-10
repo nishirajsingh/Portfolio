@@ -9,8 +9,8 @@ import './../public/favicon.svg'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Nishiraj Singh Panwar - Cloud & Swift Developer',
-  description: 'Portfolio of Nishiraj Singh Panwar - Cloud Developer and Swift Developer',
+  title: 'Nishiraj Singh Panwar - Cloud & AI/ML Developer',
+  description: 'Portfolio of Nishiraj Singh Panwar - Cloud Developer and AI/ML Developer',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
   icons: {
     icon: './../public/favicon.svg',

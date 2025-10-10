@@ -11,25 +11,25 @@ const EXPERIENCES = [
     period: '2024 - Present',
     type: 'Education',
     icon: GraduationCap,
-    description: 'Pursuing Bachelor\'s degree in Computer Science with focus on cloud computing and mobile development.',
+    description: 'Pursuing Bachelor\'s degree in Computer Science with focus on cloud computing and AI/ML development.',
     highlights: [
       'Cloud Computing Specialization',
-      'iOS Development Projects',
+      'AI/ML Development Projects',
       'Software Engineering Principles',
       'Data Structures & Algorithms'
     ]
   },
   {
-    title: 'Cloud Development Projects',
+    title: 'AI/ML Development Projects',
     company: 'Personal Projects',
     location: 'Remote',
     period: '2023 - Present',
     type: 'Development',
     icon: Code,
-    description: 'Building scalable cloud solutions and iOS applications as part of learning journey.',
+    description: 'Building scalable cloud solutions and AI/ML applications as part of learning journey.',
     highlights: [
       'AWS Infrastructure Management',
-      'Swift iOS Applications',
+      'Machine Learning Models',
       'Serverless Architecture',
       'DevOps Practices'
     ]
