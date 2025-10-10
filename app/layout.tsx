@@ -11,11 +11,17 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Nishiraj Singh Panwar - Cloud & AI/ML Developer',
   description: 'Portfolio of Nishiraj Singh Panwar - Cloud Developer and AI/ML Developer',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
   icons: {
     icon: './../public/favicon.svg',
     shortcut: './favicon.ico',
   },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({
@@ -26,7 +32,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <ThemeScript />
       </head>
       <body className={inter.className} suppressHydrationWarning>
