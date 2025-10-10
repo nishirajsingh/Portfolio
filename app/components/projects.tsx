@@ -46,6 +46,8 @@ const PROJECTS = [
 ]
 
 export function Projects() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background decoration */}
@@ -62,7 +64,7 @@ export function Projects() {
         >
           <motion.div
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-500/20 dark:to-purple-500/20 border border-blue-200 dark:border-blue-500/30 rounded-full text-sm font-medium text-blue-700 dark:text-blue-300 mb-8"
-            animate={{ scale: [1, 1.05, 1] }}
+            animate={isMobile ? {} : { scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             <Sparkles className="w-4 h-4" />
@@ -97,7 +99,7 @@ export function Projects() {
                 {/* Icon */}
                 <motion.div 
                   className={`w-14 h-14 bg-gradient-to-r ${project.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg mb-6`}
-                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  whileHover={isMobile ? {} : { rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
                   <project.icon size={24} />

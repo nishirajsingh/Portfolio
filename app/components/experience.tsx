@@ -37,6 +37,8 @@ const EXPERIENCES = [
 ]
 
 export function Experience() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/50">
       <div className="max-w-7xl mx-auto">

@@ -44,6 +44,7 @@ export function About() {
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: containerRef })
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   
   return (
     <section ref={containerRef} id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -53,7 +54,7 @@ export function About() {
       <div className="relative max-w-7xl mx-auto">
         {/* Floating Header */}
         <motion.div
-          style={{ y }}
+          style={{ y: isMobile ? 0 : y }}
           className="text-center mb-16 relative"
         >
           <motion.div

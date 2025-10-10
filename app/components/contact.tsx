@@ -47,6 +47,8 @@ const SOCIAL_LINKS = [
 ]
 
 export function Contact() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -80,7 +82,7 @@ export function Contact() {
                   <a
                     key={contact.label}
                     href={contact.href}
-                    className="flex items-center gap-4 p-4 bg-white/50 dark:bg-black/20 rounded-xl hover:scale-105 transition-transform duration-200"
+                    className={`flex items-center gap-4 p-4 bg-white/50 dark:bg-black/20 rounded-xl ${isMobile ? '' : 'hover:scale-105'} transition-transform duration-200`}
                   >
                     <div className="w-12 h-12 min-w-[3rem] bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
                       <contact.icon className="w-6 h-6 text-white" />
@@ -103,7 +105,7 @@ export function Contact() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-12 h-12 bg-white/50 dark:bg-black/20 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110 ${social.color}`}
+                    className={`w-12 h-12 bg-white/50 dark:bg-black/20 rounded-xl flex items-center justify-center transition-all duration-200 ${isMobile ? '' : 'hover:scale-110'} ${social.color}`}
                   >
                     <social.icon size={20} />
                   </a>

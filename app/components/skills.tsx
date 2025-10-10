@@ -33,6 +33,8 @@ const SKILL_CATEGORIES = [
 ]
 
 export function Skills() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   return (
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/50 relative overflow-hidden">
       {/* Background decoration */}
@@ -48,7 +50,7 @@ export function Skills() {
         >
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-full text-sm font-medium text-green-600 dark:text-green-400 mb-6"
-            animate={{ scale: [1, 1.05, 1] }}
+            animate={isMobile ? {} : { scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             <Sparkles className="w-4 h-4" />

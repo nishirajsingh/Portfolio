@@ -35,6 +35,8 @@ const CERTIFICATIONS = [
 ]
 
 export function Certifications() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   return (
     <section id="certifications" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Indian Heritage Background Pattern */}
@@ -59,7 +61,7 @@ export function Certifications() {
         >
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 rounded-full text-sm font-medium text-orange-600 dark:text-orange-400 mb-6"
-            animate={{ scale: [1, 1.05, 1] }}
+            animate={isMobile ? {} : { scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             <Award className="w-4 h-4" />
@@ -117,7 +119,7 @@ export function Certifications() {
                 {/* Certificate Icon */}
                 <motion.div 
                   className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center text-white shadow-lg mb-6 mx-auto"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  whileHover={isMobile ? {} : { rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
                   <Award size={32} />

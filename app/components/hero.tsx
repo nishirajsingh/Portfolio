@@ -8,6 +8,8 @@ import { TextReveal } from './ui/text-reveal'
 import { EnhancedButton } from './ui/enhanced-button'
 
 export function Hero() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-x-hidden pt-20">
 
@@ -29,7 +31,7 @@ export function Hero() {
             {/* Floating icons */}
             <motion.div
               className="absolute -top-8 -left-8 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg"
-              animate={{ 
+              animate={isMobile ? {} : { 
                 y: [-10, 10, -10],
                 rotate: [0, 5, -5, 0]
               }}
@@ -40,7 +42,7 @@ export function Hero() {
             
             <motion.div
               className="absolute -top-4 -right-12 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg"
-              animate={{ 
+              animate={isMobile ? {} : { 
                 y: [10, -10, 10],
                 rotate: [0, -5, 5, 0]
               }}
@@ -51,7 +53,7 @@ export function Hero() {
             
             <motion.div
               className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center shadow-lg"
-              animate={{ 
+              animate={isMobile ? {} : { 
                 scale: [1, 1.2, 1],
                 rotate: [0, 180, 360]
               }}

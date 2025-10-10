@@ -95,13 +95,14 @@ export default function ProjectsPage() {
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: containerRef })
   const y = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   
   return (
     <main ref={containerRef} className="min-h-screen relative overflow-x-hidden">
       {/* Animated Background */}
       <div className="fixed inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/5 to-pink-900/10 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-pink-950/20" />
-        {[...Array(30)].map((_, i) => (
+        {[...Array(isMobile ? 10 : 30)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
@@ -141,7 +142,7 @@ export default function ProjectsPage() {
 
           {/* Hero Header */}
           <motion.div
-            style={{ y }}
+            style={{ y: isMobile ? 0 : y }}
             className="text-center mb-20 relative"
           >
             <motion.div
