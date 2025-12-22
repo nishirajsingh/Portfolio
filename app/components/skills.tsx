@@ -1,65 +1,34 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Cloud, Brain, Code, Wrench, Sparkles, Crown, Gem } from 'lucide-react'
+import { Cloud, Brain, Code, Wrench, Sparkles } from 'lucide-react'
+import { SkillCard } from './ui/skill-card'
 import { TextReveal } from './ui/text-reveal'
 
 const SKILL_CATEGORIES = [
   {
     title: 'Cloud Technologies',
-    skills: [
-      { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
-      { name: 'Azure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg' },
-      { name: 'Google Cloud', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg' },
-      { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-      { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
-      { name: 'Serverless', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' }
-    ],
+    skills: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Serverless'],
     icon: Cloud,
-    gradient: 'from-orange-500 to-amber-600',
-    border: 'border-orange-300 dark:border-orange-700'
+    color: 'bg-gradient-to-br from-blue-500 to-blue-600'
   },
   {
     title: 'AI/ML Technologies',
-    skills: [
-      { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
-      { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
-      { name: 'Scikit-learn', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
-      { name: 'OpenAI API', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-      { name: 'Hugging Face', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-      { name: 'LangChain', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
-    ],
+    skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenAI API', 'Hugging Face', 'LangChain'],
     icon: Brain,
-    gradient: 'from-red-500 to-orange-600',
-    border: 'border-red-300 dark:border-red-700'
+    color: 'bg-gradient-to-br from-indigo-500 to-purple-600'
   },
   {
     title: 'Programming Languages',
-    skills: [
-      { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-      { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-      { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-      { name: 'Java', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-      { name: 'Go', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg' },
-      { name: 'R', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg' }
-    ],
+    skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'Go', 'R'],
     icon: Code,
-    gradient: 'from-amber-500 to-yellow-600',
-    border: 'border-amber-300 dark:border-amber-700'
+    color: 'bg-gradient-to-br from-emerald-500 to-teal-600'
   },
   {
     title: 'Tools & Frameworks',
-    skills: [
-      { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-      { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-      { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-      { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-      { name: 'CI/CD', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
-      { name: 'Terraform', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg' }
-    ],
+    skills: ['React', 'Next.js', 'Node.js', 'Git', 'CI/CD', 'Terraform'],
     icon: Wrench,
-    gradient: 'from-yellow-500 to-orange-600',
-    border: 'border-yellow-300 dark:border-yellow-700'
+    color: 'bg-gradient-to-br from-orange-500 to-amber-600'
   }
 ]
 
@@ -67,11 +36,9 @@ export function Skills() {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Royal Background Pattern */}
-      <div className="absolute inset-0 mandala-bg opacity-5" />
-      <div className="absolute top-10 left-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl" />
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-gray-900/50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 particle-bg opacity-30" />
       
       <div className="relative max-w-7xl mx-auto">
         <motion.div
@@ -79,20 +46,20 @@ export function Skills() {
           whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-2 border-orange-500/20 rounded-full text-sm font-bold text-orange-600 dark:text-orange-400 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-full text-sm font-medium text-green-600 dark:text-green-400 mb-6"
             animate={isMobile ? {} : { scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <Crown className="w-5 h-5" />
-            Royal Technical Arsenal
+            <Sparkles className="w-4 h-4" />
+            Technical Expertise
           </motion.div>
           
           <h2 className="text-4xl md:text-6xl font-bold mb-6 pb-2">
             <TextReveal className="gradient-text">
-              Skills & Mastery
+              Skills & Technologies
             </TextReveal>
           </h2>
           
@@ -103,10 +70,12 @@ export function Skills() {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            A royal collection of modern technologies, forged through dedication and continuous learning.
+            A comprehensive toolkit for building modern cloud and AI-powered solutions. 
+            Constantly learning and adapting to the latest technologies and best practices.
           </motion.p>
         </motion.div>
 
+<<<<<<< HEAD
         {/* Hexagonal/Diamond Layout */}
         <div className="relative max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -188,29 +157,40 @@ export function Skills() {
               </motion.div>
             ))}
           </div>
+=======
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {SKILL_CATEGORIES.map((category, index) => (
+            <SkillCard
+              key={category.title}
+              {...category}
+              index={index}
+            />
+          ))}
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
         </div>
         
-        {/* Royal Footer */}
+        {/* Additional info */}
         <motion.div
+<<<<<<< HEAD
           className="mt-16 text-center"
           initial={isMobile ? {} : { opacity: 0, y: 30 }}
           whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+=======
+          className="mt-20 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
           viewport={{ once: true }}
         >
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-3xl blur-xl" />
-            <div className="relative bg-gradient-to-br from-orange-50/90 to-amber-50/90 dark:from-orange-900/30 dark:to-amber-900/30 backdrop-blur-sm rounded-3xl p-8 border-2 border-orange-300/50 dark:border-orange-700/50">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Crown className="w-6 h-6 text-orange-600" />
-                <h3 className="text-2xl font-bold gradient-text">Continuous Evolution</h3>
-                <Crown className="w-6 h-6 text-orange-600" />
-              </div>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Like the timeless traditions of Rajputana, these skills are constantly refined and expanded. 
-                Currently mastering advanced AI architectures and cloud-native solutions.
-              </p>
-            </div>
+          <div className="liquid-glass rounded-3xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold mb-4 gradient-text">Always Learning</h3>
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Technology evolves rapidly, and so do I. Currently exploring advanced AI/ML models, 
+              cloud-native architectures, and cutting-edge machine learning frameworks. 
+              Passionate about staying at the forefront of innovation.
+            </p>
           </div>
         </motion.div>
       </div>

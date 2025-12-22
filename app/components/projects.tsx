@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Cloud, Brain, Server, Sparkles, Crown, ExternalLink, Github, Gem } from 'lucide-react'
+import { Cloud, Brain, Server, Sparkles } from 'lucide-react'
+import { ProjectCard } from './ui/project-card'
 import { TextReveal } from './ui/text-reveal'
 
 const PROJECTS = [
@@ -10,7 +11,7 @@ const PROJECTS = [
     description: 'A comprehensive cloud management platform built with modern cloud technologies for automated deployment and monitoring. Features real-time analytics, cost optimization, and multi-cloud support.',
     tech: ['AWS', 'Docker', 'Kubernetes', 'React', 'TypeScript', 'Terraform'],
     icon: Cloud,
-    gradient: 'from-orange-500 to-amber-600',
+    gradient: 'from-blue-500 to-cyan-500',
     liveUrl: '#',
     githubUrl: '#',
     featured: true
@@ -20,7 +21,7 @@ const PROJECTS = [
     description: 'Intelligent conversational AI platform with natural language processing and machine learning capabilities. Features context awareness, multi-language support, and real-time learning.',
     tech: ['Python', 'TensorFlow', 'OpenAI API', 'FastAPI', 'PostgreSQL'],
     icon: Brain,
-    gradient: 'from-red-500 to-orange-600',
+    gradient: 'from-purple-500 to-pink-500',
     liveUrl: '#',
     githubUrl: '#'
   },
@@ -29,7 +30,7 @@ const PROJECTS = [
     description: 'Scalable serverless architecture for API management with automatic scaling and cost optimization. Built with microservices architecture and event-driven design.',
     tech: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'Python', 'CloudFormation'],
     icon: Server,
-    gradient: 'from-amber-500 to-yellow-600',
+    gradient: 'from-green-500 to-teal-500',
     liveUrl: '#',
     githubUrl: '#'
   },
@@ -38,7 +39,7 @@ const PROJECTS = [
     description: 'Modern analytics dashboard with AI-powered insights and real-time data visualization. Features predictive analytics and automated reporting.',
     tech: ['Next.js', 'Python', 'TensorFlow', 'PostgreSQL', 'Redis'],
     icon: Sparkles,
-    gradient: 'from-yellow-500 to-orange-600',
+    gradient: 'from-orange-500 to-red-500',
     liveUrl: '#',
     githubUrl: '#'
   }
@@ -49,10 +50,8 @@ export function Projects() {
   
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Royal Background */}
-      <div className="absolute inset-0 mandala-bg opacity-5" />
-      <div className="absolute top-10 right-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl" />
+      {/* Background decoration */}
+      <div className="absolute inset-0 particle-bg opacity-30" />
       
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
@@ -64,16 +63,16 @@ export function Projects() {
           className="text-center mb-16"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-2 border-orange-500/20 rounded-full text-sm font-bold text-orange-600 dark:text-orange-400 mb-8"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-500/20 dark:to-purple-500/20 border border-blue-200 dark:border-blue-500/30 rounded-full text-sm font-medium text-blue-700 dark:text-blue-300 mb-8"
             animate={isMobile ? {} : { scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <Crown className="w-5 h-5" />
-            Royal Portfolio
+            <Sparkles className="w-4 h-4" />
+            Featured Work
           </motion.div>
           
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
               Projects & Solutions
             </span>
           </h2>
@@ -83,45 +82,28 @@ export function Projects() {
           </p>
         </motion.div>
 
-        {/* Projects Grid - Masonry Style */}
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               className="group relative"
             >
-              {/* Decorative corners */}
-              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-4 border-l-4 border-orange-500 rounded-tl-xl" />
-              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-4 border-r-4 border-amber-500 rounded-tr-xl" />
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-4 border-l-4 border-amber-500 rounded-bl-xl" />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-4 border-r-4 border-orange-500 rounded-br-xl" />
+              <div className={`absolute -inset-1 bg-gradient-to-r ${project.gradient} rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm`} />
               
-              <div className="relative bg-gradient-to-br from-orange-50/90 to-amber-50/90 dark:from-orange-900/30 dark:to-amber-900/30 backdrop-blur-xl rounded-3xl p-8 border-2 border-orange-300 dark:border-orange-700 hover:border-orange-400 dark:hover:border-orange-600 transition-all duration-300 shadow-xl hover:shadow-2xl h-full">
-                {/* Icon with Badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <motion.div 
-                    className={`w-16 h-16 bg-gradient-to-r ${project.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg relative`}
-                    whileHover={isMobile ? {} : { rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <project.icon size={28} />
-                    {project.featured && (
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                        <Gem className="w-3 h-3 text-orange-900" />
-                      </div>
-                    )}
-                  </motion.div>
-                  
-                  {project.featured && (
-                    <span className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold rounded-full">
-                      Featured
-                    </span>
-                  )}
-                </div>
+              <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/30 dark:border-gray-700/30 hover:border-gray-300/50 dark:hover:border-gray-600/50 transition-all duration-300 shadow-xl hover:shadow-2xl h-full">
+                {/* Icon */}
+                <motion.div 
+                  className={`w-14 h-14 bg-gradient-to-r ${project.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg mb-6`}
+                  whileHover={isMobile ? {} : { rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <project.icon size={24} />
+                </motion.div>
                 
                 {/* Content */}
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -137,33 +119,31 @@ export function Projects() {
                   {project.tech.slice(0, 4).map((tech) => (
                     <span 
                       key={tech}
-                      className="px-3 py-1 text-sm font-medium bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 rounded-lg border border-orange-200/50 dark:border-orange-700/50 hover:border-orange-400 dark:hover:border-orange-500 transition-colors"
+                      className="px-3 py-1 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.tech.length > 4 && (
-                    <span className="px-3 py-1 text-sm font-medium bg-white/80 dark:bg-gray-800/80 text-gray-500 dark:text-gray-400 rounded-lg border border-orange-200/50 dark:border-orange-700/50">
-                      +{project.tech.length - 4}
+                    <span className="px-3 py-1 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-full">
+                      +{project.tech.length - 4} more
                     </span>
                   )}
                 </div>
                 
                 {/* Links */}
-                <div className="flex gap-3">
+                <div className="flex gap-4">
                   <a 
                     href={project.liveUrl}
-                    className="flex-1 text-center py-3 px-4 bg-gradient-to-r from-orange-500 to-amber-600 text-white rounded-xl font-medium hover:from-orange-600 hover:to-amber-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                    className="flex-1 text-center py-2 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
                   >
-                    <ExternalLink size={16} />
-                    View
+                    View Project
                   </a>
                   <a 
                     href={project.githubUrl}
-                    className="flex-1 text-center py-3 px-4 border-2 border-orange-300 dark:border-orange-700 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 text-center py-2 px-4 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300"
                   >
-                    <Github size={16} />
-                    Code
+                    GitHub
                   </a>
                 </div>
               </div>
@@ -181,11 +161,10 @@ export function Projects() {
         >
           <a
             href="/projects"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold rounded-xl hover:from-orange-600 hover:to-amber-700 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <Crown className="w-5 h-5" />
-            View All Projects
             <Sparkles className="w-5 h-5" />
+            View All Projects
           </a>
         </motion.div>
       </div>

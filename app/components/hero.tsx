@@ -30,7 +30,7 @@ export function Hero() {
           >
             {/* Floating icons */}
             <motion.div
-              className="absolute -top-8 -left-8 w-12 h-12 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg"
+              className="absolute -top-8 -left-8 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg"
               animate={isMobile ? {} : { 
                 y: [-10, 10, -10],
                 rotate: [0, 5, -5, 0]
@@ -41,7 +41,7 @@ export function Hero() {
             </motion.div>
             
             <motion.div
-              className="absolute -top-4 -right-12 w-10 h-10 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg"
+              className="absolute -top-4 -right-12 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg"
               animate={isMobile ? {} : { 
                 y: [10, -10, 10],
                 rotate: [0, -5, 5, 0]
@@ -52,7 +52,7 @@ export function Hero() {
             </motion.div>
             
             <motion.div
-              className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center shadow-lg"
+              className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center shadow-lg"
               animate={isMobile ? {} : { 
                 scale: [1, 1.2, 1],
                 rotate: [0, 180, 360]
@@ -64,8 +64,8 @@ export function Hero() {
             
             {/* Profile image with advanced effects */}
             <div className="relative w-56 h-56 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-red-600 to-amber-600 rounded-full blur-2xl opacity-40 animate-spin-slow" />
-              <div className="absolute inset-2 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full blur-xl opacity-60 animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full blur-2xl opacity-40 animate-spin-slow" />
+              <div className="absolute inset-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-xl opacity-60 animate-pulse" />
               
               <motion.div
                 className="relative w-full h-full"
@@ -83,7 +83,7 @@ export function Hero() {
                 />
                 
                 {/* Rotating ring */}
-                <div className="absolute inset-0 border-2 border-dashed border-orange-400/50 rounded-full animate-spin-slow" />
+                <div className="absolute inset-0 border-2 border-dashed border-blue-400/50 rounded-full animate-spin-slow" />
               </motion.div>
             </div>
           </motion.div>
@@ -97,7 +97,7 @@ export function Hero() {
           >
             <div className="space-y-2">
               <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20 rounded-full text-sm font-medium text-orange-600 dark:text-orange-400 mb-4"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400 mb-4"
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
