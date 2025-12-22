@@ -75,9 +75,9 @@ export function Skills() {
       
       <div className="relative max-w-7xl mx-auto">
         <motion.div
-          initial={isMobile ? {} : { opacity: 0, y: 30 }}
-          whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -113,25 +113,25 @@ export function Skills() {
             {SKILL_CATEGORIES.map((category, index) => (
               <motion.div
                 key={category.title}
-                initial={isMobile ? {} : { opacity: 0, scale: 0.9 }}
-                whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: isMobile ? 0 : index * 0.1 }}
+                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 className="group relative"
               >
                 {/* Decorative corners */}
-                <div className="hidden md:block absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-orange-500 rounded-tl-lg" />
-                <div className="hidden md:block absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-amber-500 rounded-tr-lg" />
-                <div className="hidden md:block absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-amber-500 rounded-bl-lg" />
-                <div className="hidden md:block absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-orange-500 rounded-br-lg" />
+                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-orange-500 rounded-tl-lg" />
+                <div className="absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-amber-500 rounded-tr-lg" />
+                <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-amber-500 rounded-bl-lg" />
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-orange-500 rounded-br-lg" />
                 
                 {/* Main Card */}
-                <div className={`relative bg-gradient-to-br from-orange-50/80 to-amber-50/80 dark:from-orange-900/20 dark:to-amber-900/20 backdrop-blur-sm rounded-2xl p-8 border-2 ${category.border} shadow-xl transition-all`}>
+                <div className={`relative bg-gradient-to-br from-orange-50/80 to-amber-50/80 dark:from-orange-900/20 dark:to-amber-900/20 backdrop-blur-sm rounded-2xl p-8 border-2 ${category.border} shadow-xl hover:shadow-2xl transition-all duration-300`}>
                   {/* Icon with Royal Badge */}
                   <div className="flex items-center justify-between mb-6">
                     <motion.div 
                       className={`w-16 h-16 bg-gradient-to-br ${category.gradient} rounded-xl flex items-center justify-center shadow-lg relative`}
-                      whileHover={isMobile ? {} : { rotate: 360, scale: 1.1 }}
+                      whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.6 }}
                     >
                       <category.icon className="w-8 h-8 text-white" />
@@ -167,9 +167,9 @@ export function Skills() {
                     {category.skills.map((skill, skillIndex) => (
                       <motion.div
                         key={skill.name}
-                        initial={isMobile ? {} : { opacity: 0, x: -20 }}
-                        whileInView={isMobile ? {} : { opacity: 1, x: 0 }}
-                        transition={{ delay: isMobile ? 0 : index * 0.1 + skillIndex * 0.05 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.15 + skillIndex * 0.05 }}
                         viewport={{ once: true }}
                         className="relative"
                       >
@@ -193,9 +193,9 @@ export function Skills() {
         {/* Royal Footer */}
         <motion.div
           className="mt-16 text-center"
-          initial={isMobile ? {} : { opacity: 0, y: 30 }}
-          whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
         >
           <div className="relative max-w-4xl mx-auto">

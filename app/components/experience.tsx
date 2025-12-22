@@ -41,8 +41,6 @@ const EXPERIENCES = [
 ]
 
 export function Experience() {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-  
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-amber-50/50 dark:from-orange-950/10 dark:to-amber-950/10" />
@@ -50,9 +48,9 @@ export function Experience() {
       
       <div className="relative max-w-7xl mx-auto">
         <motion.div
-          initial={isMobile ? {} : { opacity: 0, y: 30 }}
-          whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -70,22 +68,22 @@ export function Experience() {
           {EXPERIENCES.map((experience, index) => (
             <motion.div
               key={experience.title}
-              initial={isMobile ? {} : { opacity: 0, scale: 0.9 }}
-              whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: isMobile ? 0 : index * 0.1 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
               viewport={{ once: true }}
               className="group relative"
             >
-              <div className="hidden md:block absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-orange-500 rounded-tl-lg" />
-              <div className="hidden md:block absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-amber-500 rounded-tr-lg" />
-              <div className="hidden md:block absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-amber-500 rounded-bl-lg" />
-              <div className="hidden md:block absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-orange-500 rounded-br-lg" />
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-orange-500 rounded-tl-lg" />
+              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-amber-500 rounded-tr-lg" />
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-amber-500 rounded-bl-lg" />
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-orange-500 rounded-br-lg" />
               
-              <div className={`relative bg-gradient-to-br from-orange-50/80 to-amber-50/80 dark:from-orange-900/20 dark:to-amber-900/20 backdrop-blur-sm rounded-2xl p-8 border-2 ${experience.border} shadow-xl transition-all`}>
+              <div className={`relative bg-gradient-to-br from-orange-50/80 to-amber-50/80 dark:from-orange-900/20 dark:to-amber-900/20 backdrop-blur-sm rounded-2xl p-8 border-2 ${experience.border} shadow-xl hover:shadow-2xl transition-all`}>
                 <div className="flex flex-col lg:flex-row gap-6">
                   <motion.div 
                     className={`w-16 h-16 bg-gradient-to-br ${experience.gradient} rounded-xl flex items-center justify-center shadow-lg relative flex-shrink-0`}
-                    whileHover={isMobile ? {} : { rotate: 360, scale: 1.1 }}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
                     <experience.icon className="w-8 h-8 text-white" />
@@ -120,9 +118,9 @@ export function Experience() {
                       {experience.highlights.map((highlight, i) => (
                         <motion.div
                           key={highlight}
-                          initial={isMobile ? {} : { opacity: 0, x: -20 }}
-                          whileInView={isMobile ? {} : { opacity: 1, x: 0 }}
-                          transition={{ delay: isMobile ? 0 : index * 0.1 + i * 0.05 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.15 + i * 0.05 }}
                           viewport={{ once: true }}
                           className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-orange-200/50 dark:border-orange-700/50 hover:border-orange-400 dark:hover:border-orange-500 transition-colors"
                         >
