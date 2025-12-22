@@ -6,7 +6,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen relative overflow-x-hidden">
       <EnhancedNavbar />
-      <div className="pt-32">
+      <div className="">
         <Contact />
       </div>
       <Footer />

@@ -72,8 +72,8 @@ export function EnhancedContactForm() {
   }
 
   return (
-    <div className="liquid-glass rounded-3xl p-8">
-      <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+    <div className="bg-gradient-to-br from-white to-orange-50/50 dark:from-gray-800 dark:to-orange-950/20 rounded-2xl p-8 border-2 border-orange-200 dark:border-orange-800 shadow-xl">
+      <h3 className="text-2xl font-bold mb-6 gradient-text">Send a Message</h3>
       
       {/* Success Message */}
       {submitStatus === 'success' && (
@@ -128,7 +128,7 @@ export function EnhancedContactForm() {
             placeholder="Your Name"
             required
             disabled={isSubmitting}
-            className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-3 bg-white dark:bg-gray-900 rounded-xl border-2 border-orange-200 dark:border-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           />
           <input
             type="email"
@@ -136,7 +136,7 @@ export function EnhancedContactForm() {
             placeholder="Your Email"
             required
             disabled={isSubmitting}
-            className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-3 bg-white dark:bg-gray-900 rounded-xl border-2 border-orange-200 dark:border-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           />
         </div>
         
@@ -145,7 +145,7 @@ export function EnhancedContactForm() {
           name="subject_line"
           placeholder="Subject"
           disabled={isSubmitting}
-          className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 rounded-xl border-2 border-orange-200 dark:border-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         />
         
         <textarea
@@ -154,7 +154,7 @@ export function EnhancedContactForm() {
           placeholder="Your Message"
           required
           disabled={isSubmitting}
-          className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 bg-white dark:bg-gray-900 rounded-xl border-2 border-orange-200 dark:border-orange-800 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent resize-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         />
         
         {/* Honeypot field for spam protection */}
@@ -163,7 +163,7 @@ export function EnhancedContactForm() {
         <motion.button
           type="submit"
           disabled={isSubmitting}
-          className="w-full px-8 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+          className="w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 text-white rounded-xl font-semibold hover:from-orange-600 hover:to-amber-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
           whileHover={!isSubmitting ? { scale: 1.02 } : {}}
           whileTap={!isSubmitting ? { scale: 0.98 } : {}}
         >
