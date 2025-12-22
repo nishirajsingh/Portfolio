@@ -1,28 +1,28 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Moon, Sun, User, Zap, FolderOpen, Briefcase, Award, MessageCircle } from 'lucide-react'
+import { Moon, Sun, User, Zap, FolderOpen, Briefcase, Award, Calendar, MessageCircle } from 'lucide-react'
 import { useTheme } from './theme-provider'
 import { FloatingDock } from './ui/floating-dock'
 import { MagneticButton } from './ui/magnetic-button'
 import Link from 'next/link'
 
 const NAVIGATION_ITEMS = [
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Certifications', href: '#certifications' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Experience', href: '/experience' },
+  { name: 'Certifications', href: '/certifications' },
+  { name: 'Events', href: '/events' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 const NAVIGATION_DOCK_ITEMS = [
-  { title: 'About', icon: <User size={20} />, href: '#about' },
-  { title: 'Skills', icon: <Zap size={20} />, href: '#skills' },
-  { title: 'Projects', icon: <FolderOpen size={20} />, href: '#projects' },
-  { title: 'Experience', icon: <Briefcase size={20} />, href: '#experience' },
-  { title: 'Certifications', icon: <Award size={20} />, href: '#certifications' },
-  { title: 'Contact', icon: <MessageCircle size={20} />, href: '#contact' },
+  { title: 'Home', icon: <User size={20} />, href: '/' },
+  { title: 'Projects', icon: <FolderOpen size={20} />, href: '/projects' },
+  { title: 'Experience', icon: <Briefcase size={20} />, href: '/experience' },
+  { title: 'Certifications', icon: <Award size={20} />, href: '/certifications' },
+  { title: 'Events', icon: <Calendar size={20} />, href: '/events' },
+  { title: 'Contact', icon: <MessageCircle size={20} />, href: '/contact' },
 ]
 
 export function EnhancedNavbar() {

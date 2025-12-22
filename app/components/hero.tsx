@@ -79,6 +79,7 @@ export function Hero() {
                   height={224}
                   className="relative rounded-full object-cover border-4 border-white/30 dark:border-gray-800/30 shadow-2xl backdrop-blur-sm"
                   priority
+                  unoptimized
                 />
                 
                 {/* Rotating ring */}
@@ -137,7 +138,7 @@ export function Hero() {
             <EnhancedButton
               variant="gradient"
               size="lg"
-              href="#projects"
+              href="/projects"
               glow
               className="min-h-[60px] px-8 py-4"
             >
@@ -148,7 +149,7 @@ export function Hero() {
             <EnhancedButton
               variant="secondary"
               size="lg"
-              href="#contact"
+              href="/contact"
               className="min-h-[60px] px-8 py-4"
             >
               <span className="font-semibold">Get In Touch</span>

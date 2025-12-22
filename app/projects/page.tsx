@@ -1,7 +1,8 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Cloud, Brain, Server, Sparkles, ArrowLeft, Code, Database, Globe, ExternalLink, Github, Star, Zap } from 'lucide-react'
+import { Cloud, Brain, Server, Sparkles, Code, Database, Globe, ExternalLink, Github, Star } from 'lucide-react'
+import { EnhancedNavbar } from '../components/enhanced-navbar'
 import { Footer } from '../components/footer'
 import Link from 'next/link'
 import { useRef } from 'react'
@@ -99,6 +100,7 @@ export default function ProjectsPage() {
   
   return (
     <main ref={containerRef} className="min-h-screen relative overflow-x-hidden">
+      <EnhancedNavbar />
       {/* Animated Background */}
       <div className="fixed inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/5 to-pink-900/10 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-pink-950/20" />
@@ -125,44 +127,12 @@ export default function ProjectsPage() {
       
       <div className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Floating Back Button */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="mb-12"
-          >
-            <Link 
-              href="/"
-              className="group inline-flex items-center gap-3 px-6 py-3 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-            >
-              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-              <span className="font-medium">Back to Home</span>
-            </Link>
-          </motion.div>
-
           {/* Hero Header */}
           <motion.div
-            style={{ y: isMobile ? 0 : y }}
-            className="text-center mb-20 relative"
+            className="text-center mb-20"
           >
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", duration: 1 }}
-              className="inline-block mb-8"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-full blur-2xl animate-pulse" />
-                <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center gap-3">
-                  <Zap className="w-6 h-6" />
-                  <span>Innovation Lab</span>
-                  <Star className="w-6 h-6" />
-                </div>
-              </div>
-            </motion.div>
-            
             <motion.h1 
-              className="text-6xl md:text-8xl font-black mb-8 relative"
+              className="text-5xl md:text-6xl font-black mb-6"
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -177,7 +147,7 @@ export default function ProjectsPage() {
             </motion.h1>
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
