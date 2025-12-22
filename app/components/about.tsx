@@ -65,7 +65,7 @@ export function About() {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl opacity-30 animate-pulse" />
-              <div className="relative bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-500/20 dark:to-purple-500/20 border border-blue-200 dark:border-blue-500/30 text-blue-700 dark:text-blue-300 px-6 py-3 rounded-full font-medium text-sm">
+              <div className="relative bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-500/20 dark:to-amber-500/20 border border-orange-200 dark:border-orange-500/30 text-orange-700 dark:text-orange-300 px-6 py-3 rounded-full font-medium text-sm">
                 <Sparkles className="inline w-4 h-4 mr-2" />
                 Get to know me
               </div>
@@ -78,7 +78,7 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 dark:from-orange-400 dark:via-amber-400 dark:to-yellow-400 bg-clip-text text-transparent">
               About Me
             </span>
           </motion.h2>
@@ -87,7 +87,7 @@ export function About() {
         {/* Timeline Journey */}
         <div className="mb-20">
           <motion.h3 
-            className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent"
+            className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 dark:from-orange-400 dark:via-amber-400 dark:to-yellow-400 bg-clip-text text-transparent"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
           >
@@ -96,7 +96,7 @@ export function About() {
           
           <div className="relative">
             {/* Timeline Line - Hidden on mobile */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full" />
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-500 via-amber-500 to-yellow-500 rounded-full" />
             
             <div className="space-y-8 md:space-y-12">
               {JOURNEY_POINTS.map((point, index) => (
@@ -109,7 +109,7 @@ export function About() {
                 >
                   <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'} text-center mb-4 md:mb-0`}>
                     <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-200 dark:border-gray-700">
-                      <div className="text-xl sm:text-2xl font-bold text-blue-600 mb-2">{point.year}</div>
+                      <div className="text-xl sm:text-2xl font-bold text-orange-600 mb-2">{point.year}</div>
                       <h4 className="text-lg sm:text-xl font-semibold mb-2 text-gray-800 dark:text-white">{point.title}</h4>
                       <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">{point.desc}</p>
                     </div>
@@ -118,7 +118,7 @@ export function About() {
                   {/* Timeline Node */}
                   <div className="relative z-10 mb-4 md:mb-0">
                     <motion.div
-                      className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg"
+                      className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full flex items-center justify-center shadow-lg"
                       whileHover={{ scale: 1.2, rotate: 360 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -140,11 +140,11 @@ export function About() {
           transition={{ type: "spring", duration: 1 }}
           className="relative"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-amber-600/20 rounded-3xl blur-xl" />
           <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-4">
-                <MapPin className="w-5 h-5 text-blue-600" />
+                <MapPin className="w-5 h-5 text-orange-600" />
                 <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Vadodara, Gujarat • Parul University</span>
               </div>
               
@@ -156,7 +156,7 @@ export function About() {
                 className="mt-6 flex justify-center"
                 whileHover={{ scale: 1.05 }}
               >
-                <a href="#contact" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 hover:shadow-lg">
+                <a href="#contact" className="bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 hover:shadow-lg">
                   <Zap className="w-5 h-5" />
                   Let's Build Something Amazing
                 </a>

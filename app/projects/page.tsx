@@ -103,11 +103,11 @@ export default function ProjectsPage() {
       <EnhancedNavbar />
       {/* Animated Background */}
       <div className="fixed inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-purple-900/5 to-pink-900/10 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-pink-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/10 via-amber-900/5 to-red-900/10 dark:from-orange-950/20 dark:via-amber-950/10 dark:to-red-950/20" />
         {[...Array(isMobile ? 10 : 30)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute w-1 h-1 bg-orange-400/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -131,13 +131,22 @@ export default function ProjectsPage() {
           <motion.div
             className="text-center mb-20"
           >
+            <motion.div
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-2 border-orange-500/20 rounded-full text-sm font-bold text-orange-600 dark:text-orange-400 mb-6"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Sparkles className="w-5 h-5" />
+              Innovation Showcase
+            </motion.div>
+            
             <motion.h1 
               className="text-5xl md:text-6xl font-black mb-6"
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent">
                 Projects
               </span>
               <br />
@@ -163,7 +172,7 @@ export default function ProjectsPage() {
             transition={{ delay: 0.7 }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
               Featured Projects
             </h2>
             
@@ -257,7 +266,7 @@ export default function ProjectsPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
           >
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
               All Projects
             </h2>
             
@@ -342,9 +351,9 @@ export default function ProjectsPage() {
             transition={{ delay: 2 }}
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-amber-600/20 rounded-3xl blur-2xl" />
               <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl p-12 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
-                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
                   Ready to Build Something Amazing?
                 </h3>
                 <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
@@ -356,7 +365,7 @@ export default function ProjectsPage() {
                 >
                   <Link 
                     href="/#contact"
-                    className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
+                    className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-orange-600 to-amber-600 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
                   >
                     <Sparkles className="w-6 h-6" />
                     Let's Collaborate

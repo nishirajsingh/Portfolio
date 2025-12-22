@@ -6,7 +6,7 @@ export default function ExperiencePage() {
   return (
     <main className="min-h-screen relative overflow-x-hidden">
       <EnhancedNavbar />
-      <div className="pt-32">
+      <div className="">
         <Experience />
       </div>
       <Footer />

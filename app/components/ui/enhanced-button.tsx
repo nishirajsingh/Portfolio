@@ -50,7 +50,7 @@ const EnhancedButton = forwardRef<HTMLButtonElement, EnhancedButtonProps>(
         'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-lg hover:shadow-xl': variant === 'primary',
         'liquid-glass text-gray-900 dark:text-white hover:bg-white/20 dark:hover:bg-black/20 focus:ring-gray-500': variant === 'secondary',
         'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-gray-500': variant === 'ghost',
-        'bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 focus:ring-purple-500 shadow-lg hover:shadow-xl': variant === 'gradient',
+        'bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 text-white hover:from-orange-700 hover:via-amber-700 hover:to-yellow-700 focus:ring-orange-500 shadow-lg hover:shadow-xl': variant === 'gradient',
         'bg-black text-white border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black focus:ring-cyan-400 shadow-lg shadow-cyan-400/25 hover:shadow-cyan-400/50': variant === 'neon',
       },
       glow && 'animate-glow',
