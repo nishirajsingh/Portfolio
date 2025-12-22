@@ -51,9 +51,6 @@ export function Experience() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-<<<<<<< HEAD
->>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
-=======
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -70,7 +67,6 @@ export function Experience() {
           {EXPERIENCES.map((experience, index) => (
             <motion.div
               key={experience.title}
-<<<<<<< HEAD
 <<<<<<< HEAD
               initial={isMobile ? {} : { opacity: 0, scale: 0.9 }}
               whileInView={isMobile ? {} : { opacity: 1, scale: 1 }}
@@ -101,17 +97,6 @@ export function Experience() {
                 <div className="flex-shrink-0">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
-=======
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="liquid-glass morph-card rounded-3xl p-8 hover:scale-[1.02] transition-transform duration-300"
-            >
-              <div className="flex flex-col lg:flex-row gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
->>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
                     <experience.icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
@@ -128,7 +113,6 @@ export function Experience() {
                       <div className="flex items-center gap-2 mb-1">
                         <Calendar size={16} />
                         <span>{experience.period}</span>
-<<<<<<< HEAD
                       </div>
                       <div className="flex items-center gap-2">
                         <MapPin size={16} />
@@ -185,30 +169,6 @@ export function Experience() {
                       ))}
                     </div>
 =======
-                    ))}
->>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
-=======
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin size={16} />
-                        <span>{experience.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                    {experience.description}
-                  </p>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {experience.highlights.map((highlight) => (
-                      <div
-                        key={highlight}
-                        className="flex items-center gap-3 bg-white/50 dark:bg-black/20 rounded-xl p-3"
-                      >
-                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                        <span className="text-sm font-medium">{highlight}</span>
-                      </div>
                     ))}
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
                   </div>
