@@ -61,6 +61,9 @@ export function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+<<<<<<< HEAD
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
+=======
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -83,6 +86,7 @@ export function Contact() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+<<<<<<< HEAD
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
             viewport={{ once: true }}
             className="space-y-8"
@@ -108,6 +112,11 @@ export function Contact() {
               </motion.a>
             ))}
 =======
+=======
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
             <div className="glass rounded-3xl p-8">
               <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
               <div className="space-y-6">
@@ -128,6 +137,9 @@ export function Contact() {
                 ))}
               </div>
             </div>
+<<<<<<< HEAD
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
+=======
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
 
             <div className="glass rounded-3xl p-8">
@@ -150,9 +162,15 @@ export function Contact() {
 
           <motion.div
 <<<<<<< HEAD
+<<<<<<< HEAD
             initial={isMobile ? {} : { opacity: 0, x: 30 }}
             whileInView={isMobile ? {} : { opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
+=======
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
 =======
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

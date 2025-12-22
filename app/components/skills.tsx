@@ -76,6 +76,7 @@ export function Skills() {
         </motion.div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         {/* Hexagonal/Diamond Layout */}
         <div className="relative max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -158,6 +159,8 @@ export function Skills() {
             ))}
           </div>
 =======
+=======
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {SKILL_CATEGORIES.map((category, index) => (
             <SkillCard
@@ -166,21 +169,30 @@ export function Skills() {
               index={index}
             />
           ))}
+<<<<<<< HEAD
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
+=======
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
         </div>
         
         {/* Additional info */}
         <motion.div
 <<<<<<< HEAD
+<<<<<<< HEAD
           className="mt-16 text-center"
           initial={isMobile ? {} : { opacity: 0, y: 30 }}
           whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
 =======
+=======
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
+<<<<<<< HEAD
+>>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
+=======
 >>>>>>> parent of 7a66104 (Add royal Rajputana theme with triangular ribbon banner and update UI components)
           viewport={{ once: true }}
         >
