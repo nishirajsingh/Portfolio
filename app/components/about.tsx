@@ -1,169 +1,164 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Code, Cloud, Brain, GraduationCap, Sparkles, Zap, Target, Rocket, MapPin } from 'lucide-react'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
+import {
+  Cloud,
+  Brain,
+  Code,
+  Rocket,
+  MapPin,
+  Sparkles
+} from 'lucide-react'
 
 const SKILLS = [
-  { 
-    name: 'Cloud Technologies', 
-    color: '#3B82F6', 
+  {
+    title: 'Cloud Engineering',
+    desc: 'Scalable infrastructure & deployments',
     icon: Cloud,
-    tags: ['AWS', 'Azure', 'Docker', 'Kubernetes']
   },
-  { 
-    name: 'AI/ML Development', 
-    color: '#8B5CF6', 
+  {
+    title: 'AI / ML Development',
+    desc: 'Intelligent & data-driven systems',
     icon: Brain,
-    tags: ['TensorFlow', 'PyTorch', 'OpenAI', 'Python']
   },
-  { 
-    name: 'Full Stack Development', 
-    color: '#10B981', 
+  {
+    title: 'Full-Stack Development',
+    desc: 'Modern web apps & platforms',
     icon: Code,
-    tags: ['React', 'Next.js', 'Node.js', 'TypeScript']
   },
-  { 
-    name: 'Problem Solving', 
-    color: '#F59E0B', 
-    icon: Target,
-    tags: ['Algorithms', 'Architecture', 'Optimization', 'Debugging']
-  }
-]
-
-const JOURNEY_POINTS = [
-  { year: '2018-19', title: 'Ethical Hacking', desc: 'Started with cybersecurity fundamentals', icon: Target },
-  { year: '2020-21', title: 'Web Foundations', desc: 'HTML, CSS and debugging skills', icon: Code },
-  { year: '2021-22', title: 'JEE Preparation', desc: 'Focused on engineering entrance', icon: GraduationCap },
-  { year: '2023', title: 'Security & Networking', desc: 'Cyber-security and networking certifications', icon: Target },
-  { year: '2024', title: 'Google Cloud Journey', desc: 'Google Cloud & Arcade program', icon: Cloud },
-  { year: '2025', title: 'Full Stack & AWS', desc: 'Web development, DSA & AWS mastery', icon: Rocket }
+  {
+    title: 'Problem Solving',
+    desc: 'Architecture, logic & optimization',
+    icon: Rocket,
+  },
 ]
 
 export function About() {
-  const containerRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: containerRef })
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50])
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-  
   return (
-    <section ref={containerRef} id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 particle-bg opacity-30" />
+    <section
+      id="about"
+      className="
+        relative overflow-hidden
+        px-4 sm:px-6 lg:px-16
+        pt-10 pb-32
+      "
+    >
+      {/* Background */}
+      <div className="absolute inset-0 -z-10
+        bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.12),transparent_50%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.12),transparent_50%)]
+        dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.25),transparent_45%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.25),transparent_45%)]
+      " />
+      <div className="absolute inset-0 -z-10 backdrop-blur-[100px]" />
 
-      <div className="relative max-w-7xl mx-auto">
-        {/* Floating Header */}
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
         <motion.div
-          style={{ y: isMobile ? 0 : y }}
-          className="text-center mb-16 relative"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ type: "spring", duration: 1 }}
-            className="inline-block mb-8"
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6
+            rounded-full bg-indigo-500/10 dark:bg-indigo-400/10
+            border border-indigo-500/20 dark:border-indigo-400/20
+            text-indigo-600 dark:text-indigo-300 text-sm font-medium"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl opacity-30 animate-pulse" />
-              <div className="relative bg-gradient-to-r from-orange-100 to-amber-100 dark:from-orange-500/20 dark:to-amber-500/20 border border-orange-200 dark:border-orange-500/30 text-orange-700 dark:text-orange-300 px-6 py-3 rounded-full font-medium text-sm">
-                <Sparkles className="inline w-4 h-4 mr-2" />
-                Get to know me
-              </div>
+            <Sparkles className="w-4 h-4" />
+            About Me
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl xl:text-6xl font-bold
+            text-gray-900 dark:text-white">
+            Engineer mindset.
+            <span className="block bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">
+              Builder mentality.
+            </span>
+          </h2>
+        </motion.div>
+
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* LEFT — Story */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              I’m <span className="font-semibold text-gray-900 dark:text-white">Nishiraj Singh Panwar</span>,
+              a developer focused on building scalable cloud platforms,
+              automation tools, and AI-powered applications.
+            </p>
+
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              My journey started with security and web fundamentals and evolved
+              into full-stack development, cloud engineering, and AI/ML.
+              I enjoy turning complex problems into clean, production-ready systems.
+            </p>
+
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 pt-2">
+              <MapPin className="w-4 h-4" />
+              Vadodara, Gujarat • Parul University
             </div>
           </motion.div>
-          
-          <motion.h2 
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 relative"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 dark:from-orange-400 dark:via-amber-400 dark:to-yellow-400 bg-clip-text text-transparent">
-              About Me
-            </span>
-          </motion.h2>
-        </motion.div>
 
-        {/* Timeline Journey */}
-        <div className="mb-20">
-          <motion.h3 
-            className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 dark:from-orange-400 dark:via-amber-400 dark:to-yellow-400 bg-clip-text text-transparent"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          {/* RIGHT — Skills Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
-            My Journey
-          </motion.h3>
-          
-          <div className="relative">
-            {/* Timeline Line - Hidden on mobile */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-500 via-amber-500 to-yellow-500 rounded-full" />
-            
-            <div className="space-y-8 md:space-y-12">
-              {JOURNEY_POINTS.map((point, index) => (
-                <motion.div
-                  key={point.year}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:flex-row`}
-                >
-                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'} text-center mb-4 md:mb-0`}>
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-200 dark:border-gray-700">
-                      <div className="text-xl sm:text-2xl font-bold text-orange-600 mb-2">{point.year}</div>
-                      <h4 className="text-lg sm:text-xl font-semibold mb-2 text-gray-800 dark:text-white">{point.title}</h4>
-                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">{point.desc}</p>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="relative z-10 mb-4 md:mb-0">
-                    <motion.div
-                      className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full flex items-center justify-center shadow-lg"
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <point.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                    </motion.div>
-                  </div>
-                  
-                  <div className="hidden md:block md:w-5/12" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
+            {SKILLS.map((skill, i) => (
+              <motion.div
+                key={skill.title}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.25 }}
+                className="
+                  relative rounded-2xl p-6
+                  bg-white/70 dark:bg-white/10
+                  backdrop-blur-xl
+                  border border-black/10 dark:border-white/20
+                  shadow-xl
+                "
+              >
+                <skill.icon className="w-8 h-8 mb-4 text-indigo-500" />
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                  {skill.title}
+                </h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {skill.desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Floating Info Card */}
+        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", duration: 1 }}
-          className="relative"
+          transition={{ duration: 0.8 }}
+          className="text-center mt-24"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-amber-600/20 rounded-3xl blur-xl" />
-          <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <MapPin className="w-5 h-5 text-orange-600" />
-                <span className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Vadodara, Gujarat • Parul University</span>
-              </div>
-              
-              <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">                Passionate about creating intelligent cloud solutions that bridge the gap between 
-                powerful infrastructure and user-centric AI applications. Always learning, always building.
-              </p>
-              
-              <motion.div
-                className="mt-6 flex justify-center"
-                whileHover={{ scale: 1.05 }}
-              >
-                <a href="#contact" className="bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 hover:shadow-lg">
-                  <Zap className="w-5 h-5" />
-                  Let's Build Something Amazing
-                </a>
-              </motion.div>
-            </div>
-          </div>
+          <a
+            href="/contact"
+            className="
+              inline-flex items-center gap-2
+              px-8 py-4 rounded-full font-semibold
+              bg-gradient-to-r from-indigo-500 to-pink-500
+              text-white shadow-lg hover:shadow-xl
+              transition-all
+            "
+          >
+            <Rocket className="w-5 h-5" />
+            Let’s Build Something Together
+          </a>
         </motion.div>
+
       </div>
     </section>
   )
