@@ -1,19 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Send, CheckCircle, AlertCircle, Terminal, Sparkles } from 'lucide-react'
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  // Auto-hide success/error messages after 5 seconds
   useEffect(() => {
     if (submitStatus !== 'idle') {
-      const timer = setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 5000)
+      const timer = setTimeout(() => setSubmitStatus('idle'), 5000)
       return () => clearTimeout(timer)
     }
   }, [submitStatus])
@@ -28,25 +25,18 @@ export function ContactForm() {
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
+        headers: { 'Accept': 'application/json' },
         body: formData
       })
 
       const result = await response.json()
-      console.log('Web3Forms Response:', result) // Debug log
-      
-      // Web3Forms returns success: true when successful
-      if (result.success === true) {
+      if (result.success) {
         setSubmitStatus('success')
         e.currentTarget.reset()
       } else {
-        console.error('Form submission failed:', result.message || 'Unknown error')
         setSubmitStatus('error')
       }
     } catch (error) {
-      console.error('Network error:', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -54,114 +44,135 @@ export function ContactForm() {
   }
 
   return (
-    <div className="liquid-glass rounded-3xl p-8">
-      <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+    <div className="relative group">
+      {/* Decorative background glow */}
+      <div className="absolute -inset-2 bg-gradient-to-r from-orange-500/20 to-amber-500/20 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-100 transition-opacity" />
       
-      {submitStatus === 'success' && (
-        <motion.div
-          initial={{ opacity: 0, y: -10, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-700 rounded-xl flex items-center gap-3 shadow-lg"
-        >
-          <div className="flex-shrink-0">
-            <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
-          </div>
-          <div>
-            <p className="font-semibold text-green-800 dark:text-green-200">
-              Message sent successfully!
-            </p>
-            <p className="text-sm text-green-700 dark:text-green-300">
-              Thank you for reaching out. I'll get back to you soon.
-            </p>
-          </div>
-        </motion.div>
-      )}
-
-      {submitStatus === 'error' && (
-        <motion.div
-          initial={{ opacity: 0, y: -10, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-700 rounded-xl flex items-center gap-3 shadow-lg"
-        >
-          <div className="flex-shrink-0">
-            <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400" />
-          </div>
-          <div>
-            <p className="font-semibold text-red-800 dark:text-red-200">
-              Failed to send message
-            </p>
-            <p className="text-sm text-red-700 dark:text-red-300">
-              Please try again or contact me directly via email.
-            </p>
-          </div>
-        </motion.div>
-      )}
-      
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Web3Forms Configuration */}
-        <input type="hidden" name="access_key" value="1b2c6669-deb1-4455-8f3b-ea8a6fb14343" />
-        <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio" />
-        <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+      <div className="relative bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl rounded-[2rem] p-8 border border-zinc-200 dark:border-zinc-800 shadow-2xl">
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            disabled={isSubmitting}
-            className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            disabled={isSubmitting}
-            className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50"
-          />
-        </div>
-        
-        <input
-          type="text"
-          name="subject_line"
-          placeholder="Subject"
-          disabled={isSubmitting}
-          className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 disabled:opacity-50"
-        />
-        
-        <textarea
-          name="message"
-          rows={6}
-          placeholder="Your Message"
-          required
-          disabled={isSubmitting}
-          className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all duration-200 disabled:opacity-50"
-        />
-        
-        {/* Honeypot field for spam protection */}
-        <input type="checkbox" name="botcheck" className="hidden" style={{display: 'none'}} />
-        
-        <motion.button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full px-8 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2"
-          whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-          whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-        >
-          {isSubmitting ? (
-            <>
-              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              Sending...
-            </>
-          ) : (
-            <>
-              <Send className="w-5 h-5" />
-              Send Message
-            </>
+        {/* Status Messages */}
+        <AnimatePresence mode="wait">
+          {submitStatus === 'success' && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="mb-6 overflow-hidden"
+            >
+              <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center gap-3 text-emerald-600 dark:text-emerald-400">
+                <CheckCircle size={20} />
+                <div className="text-sm font-medium text-emerald-800 dark:text-emerald-200">
+                  Transmission successful. I'll respond shortly.
+                </div>
+              </div>
+            </motion.div>
           )}
-        </motion.button>
-      </form>
+
+          {submitStatus === 'error' && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="mb-6 overflow-hidden"
+            >
+              <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3">
+                <AlertCircle size={20} className="text-red-500" />
+                <div className="text-sm font-medium text-red-800 dark:text-red-200">
+                  Connection failed. Please try again.
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <input type="hidden" name="access_key" value="1b2c6669-deb1-4455-8f3b-ea8a6fb14343" />
+          <input type="hidden" name="subject" value="New Transmission from Portfolio" />
+          <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="space-y-2">
+              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 ml-1">visitor_name</label>
+              <input
+                type="text"
+                name="name"
+                required
+                disabled={isSubmitting}
+                className="w-full px-5 py-4 bg-zinc-50 dark:bg-zinc-950/50 rounded-2xl border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-orange-500/50 focus:ring-4 focus:ring-orange-500/5 transition-all text-zinc-900 dark:text-white disabled:opacity-50"
+                placeholder="Nishiraj Singh"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 ml-1">visitor_email</label>
+              <input
+                type="email"
+                name="email"
+                required
+                disabled={isSubmitting}
+                className="w-full px-5 py-4 bg-zinc-50 dark:bg-zinc-950/50 rounded-2xl border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-orange-500/50 focus:ring-4 focus:ring-orange-500/5 transition-all text-zinc-900 dark:text-white disabled:opacity-50"
+                placeholder="hello@example.com"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 ml-1">message_subject</label>
+            <input
+              type="text"
+              name="subject_line"
+              disabled={isSubmitting}
+              className="w-full px-5 py-4 bg-zinc-50 dark:bg-zinc-950/50 rounded-2xl border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-orange-500/50 focus:ring-4 focus:ring-orange-500/5 transition-all text-zinc-900 dark:text-white disabled:opacity-50"
+              placeholder="Collaboration Opportunity"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500 ml-1">message_body</label>
+            <textarea
+              name="message"
+              rows={4}
+              required
+              disabled={isSubmitting}
+              className="w-full px-5 py-4 bg-zinc-50 dark:bg-zinc-950/50 rounded-2xl border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-orange-500/50 focus:ring-4 focus:ring-orange-500/5 transition-all text-zinc-900 dark:text-white resize-none disabled:opacity-50"
+              placeholder="Tell me about your project..."
+            />
+          </div>
+
+          <motion.button
+            type="submit"
+            disabled={isSubmitting}
+            className="group relative w-full overflow-hidden px-8 py-4 bg-zinc-900 dark:bg-orange-500 text-white rounded-2xl font-bold shadow-xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={!isSubmitting ? { y: -2 } : {}}
+            whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            
+            <div className="relative flex items-center justify-center gap-2">
+              {isSubmitting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span className="font-mono tracking-tighter">INITIATING...</span>
+                </>
+              ) : (
+                <>
+                  <Send size={18} />
+                  <span>Execute Send</span>
+                  <Terminal size={16} className="opacity-50" />
+                </>
+              )}
+            </div>
+          </motion.button>
+
+          <div className="flex items-center justify-center gap-4 pt-4">
+             <div className="h-px flex-1 bg-zinc-100 dark:bg-zinc-800" />
+             <div className="flex items-center gap-1.5">
+                <Sparkles size={14} className="text-orange-500" />
+                <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">End of Form</span>
+             </div>
+             <div className="h-px flex-1 bg-zinc-100 dark:bg-zinc-800" />
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
