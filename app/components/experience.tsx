@@ -1,9 +1,26 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, MapPin, GraduationCap, Code, Crown, Gem } from 'lucide-react'
+import { Calendar, MapPin, GraduationCap, Code, Sparkles, Terminal, Users } from 'lucide-react'
 
 const EXPERIENCES = [
+  {
+    title: 'Volunteer - Marketing & Crowd Management',
+    company: 'AWS Cloud Club at Parul University',
+    location: 'Vadodara, Gujarat',
+    period: 'Oct 2025 - Dec 2025',
+    type: 'Volunteer',
+    icon: Users,
+    description: 'Played a key role in organizing community events, managing attendee logistics, and promoting cloud awareness among students.',
+    highlights: [
+      'Event Coordination',
+      'Community Outreach',
+      'Crowd Management',
+      'Public Relations'
+    ],
+    color: 'text-orange-500',
+    dotColor: 'bg-orange-500'
+  },
   {
     title: 'Computer Science Student',
     company: 'Parul University',
@@ -11,132 +28,140 @@ const EXPERIENCES = [
     period: '2024 - Present',
     type: 'Education',
     icon: GraduationCap,
-    description: 'Pursuing Bachelor\'s degree in Computer Science with focus on cloud computing and AI/ML development.',
+    description: 'Pursuing a Bachelor\'s degree in Computer Science with a core focus on distributed systems, cloud infrastructure, and AI/ML development.',
     highlights: [
       'Cloud Computing Specialization',
-      'AI/ML Development Projects',
-      'Software Engineering Principles',
-      'Data Structures & Algorithms'
+      'Data Structures & Algorithms',
+      'Software Architecture',
+      'AI/ML Fundamentals'
     ],
-    gradient: 'from-orange-500 to-amber-600',
-    border: 'border-orange-300 dark:border-orange-700'
+    color: 'text-amber-500',
+    dotColor: 'bg-amber-500'
   },
   {
     title: 'AI/ML Development Projects',
-    company: 'Personal Projects',
+    company: 'Personal Labs',
     location: 'Remote',
     period: '2023 - Present',
     type: 'Development',
     icon: Code,
-    description: 'Building scalable cloud solutions and AI/ML applications as part of learning journey.',
+    description: 'Engineering scalable cloud solutions and training neural networks. Focused on building production-ready serverless architectures.',
     highlights: [
-      'AWS Infrastructure Management',
-      'Machine Learning Models',
-      'Serverless Architecture',
-      'DevOps Practices'
+      'AWS Infrastructure',
+      'Serverless Design',
+      'Model Optimization',
+      'DevOps Pipelines'
     ],
-    gradient: 'from-red-500 to-orange-600',
-    border: 'border-red-300 dark:border-red-700'
+    color: 'text-orange-600',
+    dotColor: 'bg-orange-600'
   }
 ]
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 to-amber-50/50 dark:from-orange-950/10 dark:to-amber-950/10" />
-      <div className="absolute inset-0 mandala-bg opacity-5" />
+    <section id="experience" className="py-24 px-6 lg:px-12 bg-white dark:bg-[#030303] relative overflow-hidden">
+      {/* 1. Background Grid Sync */}
+      <div className="absolute inset-0 opacity-[0.1] dark:opacity-[0.15] pointer-events-none" 
+           style={{ backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`, backgroundSize: '50px 50px' }} />
       
-      <div className="relative max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Crown className="w-8 h-8 text-orange-600" />
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text">Experience & Education</h2>
-            <Crown className="w-8 h-8 text-orange-600" />
-          </div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            My journey in technology and continuous learning
-          </p>
-        </motion.div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* Header */}
+        <header className="mb-20">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2 text-orange-500 font-mono text-sm mb-4"
+          >
+            <Terminal size={16} /> <span>./career-roadmap</span>
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-bold dark:text-white tracking-tighter"
+          >
+            The Journey <br /> <span className="text-zinc-400">& Milestones.</span>
+          </motion.h2>
+        </header>
 
-        <div className="space-y-8 max-w-5xl mx-auto">
-          {EXPERIENCES.map((experience, index) => (
+        {/* Timeline Pipeline */}
+        <div className="relative space-y-12">
+          {/* Central Line */}
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-zinc-200 dark:bg-zinc-800 md:-translate-x-1/2" />
+
+          {EXPERIENCES.map((exp, index) => (
             <motion.div
-              key={experience.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              key={exp.title + index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative"
+              className={`relative flex flex-col md:flex-row items-center ${
+                index % 2 === 0 ? 'md:flex-row-reverse' : ''
+              }`}
             >
-              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-orange-500 rounded-tl-lg" />
-              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-amber-500 rounded-tr-lg" />
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-amber-500 rounded-bl-lg" />
-              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-orange-500 rounded-br-lg" />
-              
-              <div className={`relative bg-gradient-to-br from-orange-50/80 to-amber-50/80 dark:from-orange-900/20 dark:to-amber-900/20 backdrop-blur-sm rounded-2xl p-8 border-2 ${experience.border} shadow-xl hover:shadow-2xl transition-all`}>
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <motion.div 
-                    className={`w-16 h-16 bg-gradient-to-br ${experience.gradient} rounded-xl flex items-center justify-center shadow-lg relative flex-shrink-0`}
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <experience.icon className="w-8 h-8 text-white" />
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                      <Gem className="w-3 h-3 text-orange-900" />
-                    </div>
-                  </motion.div>
+              {/* Timeline Dot */}
+              <div className={`absolute left-0 md:left-1/2 w-4 h-4 rounded-full border-4 border-white dark:border-[#030303] z-20 md:-translate-x-1/2 ${exp.dotColor} shadow-[0_0_15px_rgba(249,115,22,0.5)]`} />
+
+              {/* Card Container */}
+              <div className="w-full md:w-1/2 pl-8 md:pl-0 md:px-12">
+                <div className="group relative p-8 rounded-[2.5rem] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-orange-500/50 transition-all">
                   
-                  <div className="flex-grow">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold mb-1 text-gray-900 dark:text-white">{experience.title}</h3>
-                        <p className="text-xl font-semibold gradient-text">{experience.company}</p>
+                  {/* Floating Icon */}
+                  <div className={`absolute -top-4 -right-4 p-3 rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-xl group-hover:rotate-6 transition-transform ${exp.color}`}>
+                    <exp.icon size={24} />
+                  </div>
+
+                  {/* Header */}
+                  <div className="mb-4">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-orange-500 bg-orange-500/10 px-2 py-0.5 rounded-full border border-orange-500/20">
+                      {exp.type}
+                    </span>
+                    <h3 className="text-2xl font-bold dark:text-white mt-3 tracking-tight">{exp.title}</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 font-medium">{exp.company}</p>
+                  </div>
+
+                  {/* Body */}
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-6 leading-relaxed">
+                    {exp.description}
+                  </p>
+
+                  {/* Stats / Info */}
+                  <div className="flex flex-wrap gap-4 text-[11px] font-mono text-zinc-400 mb-6 pb-6 border-b border-zinc-100 dark:border-zinc-800">
+                    <div className="flex items-center gap-1.5"><Calendar size={12} /> {exp.period}</div>
+                    <div className="flex items-center gap-1.5"><MapPin size={12} /> {exp.location}</div>
+                  </div>
+
+                  {/* Highlights Grid */}
+                  <div className="grid grid-cols-2 gap-2">
+                    {exp.highlights.map((h) => (
+                      <div key={h} className="flex items-center gap-2 text-xs text-zinc-600 dark:text-zinc-300">
+                        <div className={`w-1 h-1 rounded-full ${exp.dotColor}`} />
+                        {h}
                       </div>
-                      <div className="flex flex-col sm:items-end text-gray-600 dark:text-gray-400 mt-2 sm:mt-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Calendar size={16} />
-                          <span className="text-sm">{experience.period}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin size={16} />
-                          <span className="text-sm">{experience.location}</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                      {experience.description}
-                    </p>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {experience.highlights.map((highlight, i) => (
-                        <motion.div
-                          key={highlight}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.15 + i * 0.05 }}
-                          viewport={{ once: true }}
-                          className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-orange-200/50 dark:border-orange-700/50 hover:border-orange-400 dark:hover:border-orange-500 transition-colors"
-                        >
-                          <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full" />
-                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{highlight}</span>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
+              
+              {/* Spacer for empty side */}
+              <div className="hidden md:block md:w-1/2" />
             </motion.div>
           ))}
         </div>
+
+        {/* Closing CTA */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mt-20 text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 text-sm italic">
+            <Sparkles size={16} className="text-orange-500" />
+            Evolving and growing every single day...
+          </div>
+        </motion.div>
       </div>
     </section>
   )

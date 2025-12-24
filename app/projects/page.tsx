@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Cloud, Brain, Server, Sparkles, Code, Database, Globe, ExternalLink, Github, Star } from 'lucide-react'
+import { Cloud, Brain, Server, Sparkles, Code, Database, Globe, ExternalLink, Github, Star, Terminal, Lock } from 'lucide-react'
 import { EnhancedNavbar } from '../components/enhanced-navbar'
 import { Footer } from '../components/footer'
 import Link from 'next/link'
@@ -10,373 +10,183 @@ import { useRef } from 'react'
 const PROJECTS = [
   {
     title: 'Cloud Infrastructure Manager',
-    description: 'A comprehensive cloud management platform built with modern cloud technologies for automated deployment and monitoring.',
-    tech: ['AWS', 'Docker', 'Kubernetes', 'React', 'TypeScript', 'Terraform'],
+    description: 'A comprehensive cloud management platform for automated deployment and multi-cloud monitoring.',
+    tech: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
     icon: Cloud,
-    gradient: 'from-blue-500 to-cyan-500',
-    liveUrl: '#',
-    githubUrl: '#',
+    gradient: 'from-orange-500 to-amber-500',
+    status: 'Coming Soon',
     featured: true,
     category: 'Cloud'
   },
   {
-    title: 'AI-Powered Chatbot Platform',
-    description: 'Intelligent conversational AI platform with natural language processing and machine learning capabilities.',
-    tech: ['Python', 'TensorFlow', 'OpenAI API', 'FastAPI', 'PostgreSQL'],
+    title: 'AI Chatbot Platform',
+    description: 'Intelligent conversational AI platform with natural language processing and real-time learning.',
+    tech: ['Python', 'TensorFlow', 'OpenAI', 'FastAPI'],
     icon: Brain,
-    gradient: 'from-purple-500 to-pink-500',
-    liveUrl: '#',
-    githubUrl: '#',
+    gradient: 'from-orange-600 to-red-600',
+    status: 'Coming Soon',
     featured: true,
     category: 'AI/ML'
   },
   {
     title: 'Serverless API Gateway',
-    description: 'Scalable serverless architecture for API management with automatic scaling and cost optimization.',
-    tech: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'Python', 'CloudFormation'],
+    description: 'Scalable serverless architecture for API management with automatic scaling.',
+    tech: ['AWS Lambda', 'DynamoDB', 'Python'],
     icon: Server,
-    gradient: 'from-green-500 to-teal-500',
-    liveUrl: '#',
-    githubUrl: '#',
+    gradient: 'from-amber-500 to-orange-500',
+    status: 'Coming Soon',
     category: 'Backend'
   },
   {
-    title: 'AI-Powered Analytics Dashboard',
+    title: 'Analytics Dashboard',
     description: 'Modern analytics dashboard with AI-powered insights and real-time data visualization.',
-    tech: ['Next.js', 'Python', 'TensorFlow', 'PostgreSQL', 'Redis'],
+    tech: ['Next.js', 'Python', 'Redis'],
     icon: Sparkles,
-    gradient: 'from-orange-500 to-red-500',
-    liveUrl: '#',
-    githubUrl: '#',
+    gradient: 'from-red-500 to-orange-500',
+    status: 'Coming Soon',
     category: 'AI/ML'
   },
   {
     title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with modern payment integration and real-time order tracking.',
-    tech: ['Next.js', 'Node.js', 'MongoDB', 'Stripe', 'Redis', 'Docker'],
+    description: 'Full-stack e-commerce solution with modern payment integration and order tracking.',
+    tech: ['Next.js', 'Node.js', 'MongoDB', 'Stripe'],
     icon: Globe,
-    gradient: 'from-indigo-500 to-purple-500',
-    liveUrl: '#',
-    githubUrl: '#',
+    gradient: 'from-orange-400 to-amber-600',
+    status: 'Coming Soon',
     category: 'Full Stack'
   },
   {
-    title: 'Real-time Chat Application',
-    description: 'Scalable real-time messaging platform with end-to-end encryption and group chat capabilities.',
-    tech: ['React', 'Socket.io', 'Node.js', 'MongoDB', 'WebRTC'],
+    title: 'Real-time Chat App',
+    description: 'Scalable messaging platform with end-to-end encryption and group capabilities.',
+    tech: ['Socket.io', 'Node.js', 'WebRTC'],
     icon: Code,
-    gradient: 'from-pink-500 to-rose-500',
-    liveUrl: '#',
-    githubUrl: '#',
+    gradient: 'from-orange-500 to-rose-500',
+    status: 'Coming Soon',
     category: 'Full Stack'
-  },
-  {
-    title: 'Data Visualization Suite',
-    description: 'Interactive data visualization platform for business intelligence with custom chart types.',
-    tech: ['D3.js', 'React', 'Python', 'FastAPI', 'PostgreSQL'],
-    icon: Database,
-    gradient: 'from-emerald-500 to-cyan-500',
-    liveUrl: '#',
-    githubUrl: '#',
-    category: 'Frontend'
-  },
-  {
-    title: 'DevOps Automation Pipeline',
-    description: 'Complete CI/CD pipeline automation with infrastructure as code and automated testing.',
-    tech: ['Jenkins', 'Docker', 'Kubernetes', 'Terraform', 'AWS', 'Ansible'],
-    icon: Server,
-    gradient: 'from-yellow-500 to-orange-500',
-    liveUrl: '#',
-    githubUrl: '#',
-    category: 'DevOps'
   }
 ]
 
 export default function ProjectsPage() {
   const containerRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: containerRef })
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
   
   return (
-    <main ref={containerRef} className="min-h-screen relative overflow-x-hidden">
+    <main ref={containerRef} className="min-h-screen bg-white dark:bg-[#030303] relative overflow-x-hidden">
       <EnhancedNavbar />
-      {/* Animated Background */}
-      <div className="fixed inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/10 via-amber-900/5 to-red-900/10 dark:from-orange-950/20 dark:via-amber-950/10 dark:to-red-950/20" />
-        {[...Array(isMobile ? 10 : 30)].map((_, i) => (
+      
+      {/* 1. Background System Sync */}
+      <div className="absolute inset-0 opacity-[0.1] dark:opacity-[0.15] pointer-events-none" 
+           style={{ backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`, backgroundSize: '50px 50px' }} />
+      
+      {/* Animated Particles */}
+      <div className="fixed inset-0 pointer-events-none">
+        {[...Array(isMobile ? 10 : 20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-orange-400/30 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [0, 1, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: i * 0.1,
-            }}
+            className="absolute w-1 h-1 bg-orange-500/20 rounded-full"
+            style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
+            animate={{ scale: [0, 1.5, 0], opacity: [0, 0.5, 0] }}
+            transition={{ duration: Math.random() * 3 + 2, repeat: Infinity, delay: i * 0.2 }}
           />
         ))}
       </div>
-      
-      <div className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Hero Header */}
-          <motion.div
-            className="text-center mb-20"
+
+      <div className="relative z-10 py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+        {/* Header */}
+        <header className="mb-24 text-center lg:text-left">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="inline-flex items-center gap-2 text-orange-500 font-mono text-sm mb-4"
           >
+            <Terminal size={16} /> <span>./portfolio-builds</span>
+          </motion.div>
+          
+          <h1 className="text-6xl md:text-8xl font-bold dark:text-white tracking-tighter leading-[0.9]">
+            Recent <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Deployments.</span>
+          </h1>
+        </header>
+
+        {/* Featured Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
+          {PROJECTS.filter(p => p.featured).map((project, index) => (
             <motion.div
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-2 border-orange-500/20 rounded-full text-sm font-bold text-orange-600 dark:text-orange-400 mb-6"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="group relative p-8 rounded-[3rem] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xl overflow-hidden"
             >
-              <Sparkles className="w-5 h-5" />
-              Innovation Showcase
-            </motion.div>
-            
-            <motion.h1 
-              className="text-5xl md:text-6xl font-black mb-6"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent">
-                Projects
-              </span>
-              <br />
-              <span className="text-gray-900 dark:text-white">
-                Showcase
-              </span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              Where innovation meets execution. Explore my journey through code, creativity, and cutting-edge technology.
-            </motion.p>
-          </motion.div>
-
-          {/* Featured Projects */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="mb-20"
-          >
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
-              Featured Projects
-            </h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              {PROJECTS.filter(p => p.featured).map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.2, type: "spring" }}
-                  className="group relative"
-                >
-                  <div className={`absolute -inset-2 bg-gradient-to-r ${project.gradient} rounded-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl`} />
-                  
-                  <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/30 dark:border-gray-700/30 shadow-2xl hover:shadow-3xl transition-all duration-500 group-hover:scale-105">
-                    {/* Featured Badge */}
-                    <div className="absolute -top-3 -right-3">
-                      <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-                        <Star className="w-4 h-4" />
-                        Featured
-                      </div>
-                    </div>
-                    
-                    {/* Icon */}
-                    <motion.div 
-                      className={`w-20 h-20 bg-gradient-to-r ${project.gradient} rounded-3xl flex items-center justify-center text-white shadow-2xl mb-6`}
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.8 }}
-                    >
-                      <project.icon size={32} />
-                    </motion.div>
-                    
-                    {/* Content */}
-                    <div className="mb-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                          {project.title}
-                        </h3>
-                        <span className={`px-3 py-1 text-xs font-bold rounded-full bg-gradient-to-r ${project.gradient} text-white`}>
-                          {project.category}
-                        </span>
-                      </div>
-                      
-                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-                        {project.description}
-                      </p>
-                      
-                      {/* Tech Stack */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((tech) => (
-                          <span 
-                            key={tech}
-                            className="px-3 py-1 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:scale-105 transition-transform cursor-default"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Action Buttons */}
-                    <div className="flex gap-4">
-                      <motion.a 
-                        href={project.liveUrl}
-                        className={`flex-1 text-center py-3 px-6 bg-gradient-to-r ${project.gradient} text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <ExternalLink size={18} />
-                        Live Demo
-                      </motion.a>
-                      <motion.a 
-                        href={project.githubUrl}
-                        className="flex-1 text-center py-3 px-6 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Github size={18} />
-                        Code
-                      </motion.a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* All Projects Grid */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-          >
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-              All Projects
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
-              {PROJECTS.filter(p => !p.featured).map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.4 + index * 0.1 }}
-                  className="group relative"
-                >
-                  <div className={`absolute -inset-1 bg-gradient-to-r ${project.gradient} rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-sm`} />
-                  
-                  <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/30 dark:border-gray-700/30 shadow-xl hover:shadow-2xl transition-all duration-300 group-hover:scale-105 h-full">
-                    {/* Icon & Category */}
-                    <div className="flex items-center justify-between mb-4">
-                      <motion.div 
-                        className={`w-12 h-12 bg-gradient-to-r ${project.gradient} rounded-xl flex items-center justify-center text-white shadow-lg`}
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <project.icon size={20} />
-                      </motion.div>
-                      <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">
-                        {project.category}
-                      </span>
-                    </div>
-                    
-                    {/* Content */}
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                      {project.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
-                      {project.description}
-                    </p>
-                    
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {project.tech.slice(0, 3).map((tech) => (
-                        <span 
-                          key={tech}
-                          className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-md"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.tech.length > 3 && (
-                        <span className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-500 rounded-md">
-                          +{project.tech.length - 3}
-                        </span>
-                      )}
-                    </div>
-                    
-                    {/* Links */}
-                    <div className="flex gap-2">
-                      <a 
-                        href={project.liveUrl}
-                        className="flex-1 text-center py-2 px-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                      >
-                        Demo
-                      </a>
-                      <a 
-                        href={project.githubUrl}
-                        className="flex-1 text-center py-2 px-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                      >
-                        Code
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CTA Section */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2 }}
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600/20 to-amber-600/20 rounded-3xl blur-2xl" />
-              <div className="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl rounded-3xl p-12 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl">
-                <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
-                  Ready to Build Something Amazing?
-                </h3>
-                <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-                  Let's collaborate and turn your ideas into reality with cutting-edge technology and innovative solutions.
-                </p>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link 
-                    href="/#contact"
-                    className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-orange-600 to-amber-600 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
-                  >
-                    <Sparkles className="w-6 h-6" />
-                    Let's Collaborate
-                    <ExternalLink className="w-6 h-6" />
-                  </Link>
-                </motion.div>
+              {/* Coming Soon Overlay */}
+              <div className="absolute inset-0 bg-white/60 dark:bg-black/60 backdrop-blur-[4px] z-20 flex flex-col items-center justify-center">
+                 <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-6 py-3 rounded-2xl flex items-center gap-3 shadow-2xl">
+                    <Lock size={16} className="text-orange-500" />
+                    <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-zinc-900 dark:text-white">
+                      {project.status}
+                    </span>
+                 </div>
               </div>
-            </div>
-          </motion.div>
+
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="flex justify-between items-start mb-8">
+                  <div className={`p-4 rounded-2xl bg-gradient-to-r ${project.gradient} text-white shadow-xl shadow-orange-500/20`}>
+                    <project.icon size={32} />
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-orange-500 border border-orange-500/20 text-[10px] font-bold uppercase tracking-widest">
+                    <Star size={10} fill="currentColor" /> Featured
+                  </div>
+                </div>
+
+                <h3 className="text-3xl font-bold dark:text-white mb-4 tracking-tight">{project.title}</h3>
+                <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed text-lg italic">
+                  "{project.description}"
+                </p>
+
+                <div className="mt-auto flex flex-wrap gap-2">
+                  {project.tech.map(t => (
+                    <span key={t} className="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-[10px] font-mono border border-zinc-200 dark:border-zinc-800 text-zinc-500">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Regular Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.filter(p => !p.featured).map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="group relative p-8 rounded-[2rem] border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-white/40 dark:bg-black/40 backdrop-blur-[2px] z-20 flex items-center justify-center">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-400">
+                  Coming Soon
+                </span>
+              </div>
+
+              <div className="relative z-10">
+                <div className="text-orange-500 mb-6 opacity-60">
+                   <project.icon size={24} />
+                </div>
+                <h3 className="text-xl font-bold dark:text-white mb-2">{project.title}</h3>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-6 line-clamp-2 italic">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                   {project.tech.map(t => (
+                     <span key={t} className="text-[9px] font-mono text-zinc-500">{t}</span>
+                   ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
+      
       <Footer />
     </main>
   )

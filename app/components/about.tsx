@@ -4,10 +4,12 @@ import { motion } from 'framer-motion'
 import {
   Cloud,
   Brain,
-  Code,
+  Code2,
   Rocket,
   MapPin,
-  Sparkles
+  Sparkles,
+  ChevronRight,
+  Target
 } from 'lucide-react'
 
 const SKILLS = [
@@ -15,21 +17,29 @@ const SKILLS = [
     title: 'Cloud Engineering',
     desc: 'Scalable infrastructure & deployments',
     icon: Cloud,
+    color: 'text-blue-500',
+    bg: 'bg-blue-500/10'
   },
   {
     title: 'AI / ML Development',
     desc: 'Intelligent & data-driven systems',
     icon: Brain,
+    color: 'text-purple-500',
+    bg: 'bg-purple-500/10'
   },
   {
     title: 'Full-Stack Development',
     desc: 'Modern web apps & platforms',
-    icon: Code,
+    icon: Code2,
+    color: 'text-orange-500',
+    bg: 'bg-orange-500/10'
   },
   {
     title: 'Problem Solving',
     desc: 'Architecture, logic & optimization',
-    icon: Rocket,
+    icon: Target,
+    color: 'text-emerald-500',
+    bg: 'bg-emerald-500/10'
   },
 ]
 
@@ -37,128 +47,127 @@ export function About() {
   return (
     <section
       id="about"
-      className="
-        relative overflow-hidden
-        px-4 sm:px-6 lg:px-16
-        pt-10 pb-32
-      "
+      className="relative overflow-hidden bg-white dark:bg-[#030303] px-6 lg:px-12 py-24"
     >
-      {/* Background */}
-      <div className="absolute inset-0 -z-10
-        bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.12),transparent_50%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.12),transparent_50%)]
-        dark:bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.25),transparent_45%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.25),transparent_45%)]
-      " />
-      <div className="absolute inset-0 -z-10 backdrop-blur-[100px]" />
+      {/* 1. Background System Sync with Hero */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div 
+          className="absolute inset-0 opacity-[0.1] dark:opacity-[0.15]" 
+          style={{ 
+            backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`, 
+            backgroundSize: '50px 50px' 
+          }} 
+        />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_60%,rgba(249,115,22,0.05),transparent_50%)]" />
+      </div>
 
-      <div className="max-w-7xl mx-auto">
-
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6
-            rounded-full bg-indigo-500/10 dark:bg-indigo-400/10
-            border border-indigo-500/20 dark:border-indigo-400/20
-            text-indigo-600 dark:text-indigo-300 text-sm font-medium"
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* Header - Modern Left Aligned */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-2 text-orange-600 dark:text-orange-500 font-mono text-sm mb-4"
           >
-            <Sparkles className="w-4 h-4" />
-            About Me
-          </div>
-
-          <h2 className="text-4xl sm:text-5xl xl:text-6xl font-bold
-            text-gray-900 dark:text-white">
-            Engineer mindset.
-            <span className="block bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">
+            <Sparkles size={16} />
+            <span className="tracking-[0.2em] uppercase">The Persona</span>
+          </motion.div>
+          
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-7xl font-bold text-zinc-900 dark:text-white tracking-tighter"
+          >
+            Engineer mindset. <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">
               Builder mentality.
             </span>
-          </h2>
-        </motion.div>
+          </motion.h2>
+        </div>
 
-        {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-          {/* LEFT — Story */}
+          {/* LEFT — Story & Bio (7 Columns) */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7 space-y-8"
           >
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              I’m <span className="font-semibold text-gray-900 dark:text-white">Nishiraj Singh Panwar</span>,
-              a developer focused on building scalable cloud platforms,
-              automation tools, and AI-powered applications.
-            </p>
+            <div className="space-y-6">
+              <p className="text-xl md:text-2xl text-zinc-700 dark:text-zinc-300 leading-relaxed font-medium">
+                I’m <span className="text-zinc-900 dark:text-white font-bold underline decoration-orange-500/30 decoration-4">Nishiraj Singh Panwar</span>, 
+                a developer focused on building scalable cloud platforms and intelligent AI-powered applications.
+              </p>
 
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              My journey started with security and web fundamentals and evolved
-              into full-stack development, cloud engineering, and AI/ML.
-              I enjoy turning complex problems into clean, production-ready systems.
-            </p>
-
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 pt-2">
-              <MapPin className="w-4 h-4" />
-              Vadodara, Gujarat • Parul University
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                My journey evolved from mastering web security fundamentals to engineering 
+                complex production systems. I specialize in turning architectural challenges 
+                into clean, optimized, and scalable codebases.
+              </p>
             </div>
+
+            {/* Quick Stats / Info Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 backdrop-blur-sm">
+                <div className="flex items-center gap-3 text-zinc-900 dark:text-white font-semibold">
+                  <MapPin className="text-orange-500" size={18} />
+                  Based in Vadodara, India
+                </div>
+              </div>
+              <div className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 backdrop-blur-sm">
+                <div className="flex items-center gap-3 text-zinc-900 dark:text-white font-semibold">
+                  <Rocket className="text-orange-500" size={18} />
+                  Parul University Graduate
+                </div>
+              </div>
+            </div>
+
+            <motion.div 
+              whileHover={{ x: 10 }}
+              className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-500 font-bold cursor-pointer pt-4 group"
+            >
+              Learn more about my process <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+            </motion.div>
           </motion.div>
 
-          {/* RIGHT — Skills Cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          >
+          {/* RIGHT — Bento Skills (5 Columns) */}
+          <div className="lg:col-span-5 grid grid-cols-1 gap-4">
             {SKILLS.map((skill, i) => (
               <motion.div
                 key={skill.title}
-                whileHover={{ scale: 1.04 }}
-                transition={{ duration: 0.25 }}
-                className="
-                  relative rounded-2xl p-6
-                  bg-white/70 dark:bg-white/10
-                  backdrop-blur-xl
-                  border border-black/10 dark:border-white/20
-                  shadow-xl
-                "
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+                className="group relative p-6 rounded-[2rem] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-orange-500/50 transition-all shadow-sm overflow-hidden"
               >
-                <skill.icon className="w-8 h-8 mb-4 text-indigo-500" />
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                  {skill.title}
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {skill.desc}
-                </p>
+                {/* Subtle Background Glow on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <div className="flex items-start gap-5 relative z-10">
+                  <div className={`p-4 rounded-2xl ${skill.bg} ${skill.color} transition-colors`}>
+                    <skill.icon size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-zinc-900 dark:text-white mb-1 tracking-tight">
+                      {skill.title}
+                    </h4>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-snug">
+                      {skill.desc}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mt-24"
-        >
-          <a
-            href="/contact"
-            className="
-              inline-flex items-center gap-2
-              px-8 py-4 rounded-full font-semibold
-              bg-gradient-to-r from-indigo-500 to-pink-500
-              text-white shadow-lg hover:shadow-xl
-              transition-all
-            "
-          >
-            <Rocket className="w-5 h-5" />
-            Let’s Build Something Together
-          </a>
-        </motion.div>
-
       </div>
     </section>
   )

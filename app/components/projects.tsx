@@ -1,192 +1,143 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Cloud, Brain, Server, Sparkles, Crown, ExternalLink, Github, Gem } from 'lucide-react'
-import { TextReveal } from './ui/text-reveal'
+import { Cloud, Brain, Server, Sparkles, ExternalLink, Github, Terminal, Lock } from 'lucide-react'
 
 const PROJECTS = [
   {
     title: 'Cloud Infrastructure Manager',
-    description: 'A comprehensive cloud management platform built with modern cloud technologies for automated deployment and monitoring. Features real-time analytics, cost optimization, and multi-cloud support.',
-    tech: ['AWS', 'Docker', 'Kubernetes', 'React', 'TypeScript', 'Terraform'],
+    description: 'Automated deployment and monitoring system for multi-cloud environments. Focused on cost optimization and real-time observability.',
+    tech: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
     icon: Cloud,
-    gradient: 'from-orange-500 to-amber-600',
-    liveUrl: '#',
-    githubUrl: '#',
-    featured: true
+    status: 'Coming Soon',
+    size: 'large' // Spans 2 columns
   },
   {
-    title: 'AI-Powered Chatbot Platform',
-    description: 'Intelligent conversational AI platform with natural language processing and machine learning capabilities. Features context awareness, multi-language support, and real-time learning.',
-    tech: ['Python', 'TensorFlow', 'OpenAI API', 'FastAPI', 'PostgreSQL'],
+    title: 'AI Chatbot Platform',
+    description: 'Intelligent NLP-driven conversational AI with context awareness and multi-language support.',
+    tech: ['Python', 'OpenAI', 'FastAPI'],
     icon: Brain,
-    gradient: 'from-red-500 to-orange-600',
-    liveUrl: '#',
-    githubUrl: '#'
+    status: 'Coming Soon',
+    size: 'small'
   },
   {
-    title: 'Serverless API Gateway',
-    description: 'Scalable serverless architecture for API management with automatic scaling and cost optimization. Built with microservices architecture and event-driven design.',
-    tech: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'Python', 'CloudFormation'],
+    title: 'Serverless Gateway',
+    description: 'Event-driven API management architecture using microservices and serverless logic.',
+    tech: ['AWS Lambda', 'DynamoDB', 'Python'],
     icon: Server,
-    gradient: 'from-amber-500 to-yellow-600',
-    liveUrl: '#',
-    githubUrl: '#'
+    status: 'Coming Soon',
+    size: 'small'
   },
   {
-    title: 'AI-Powered Analytics Dashboard',
-    description: 'Modern analytics dashboard with AI-powered insights and real-time data visualization. Features predictive analytics and automated reporting.',
-    tech: ['Next.js', 'Python', 'TensorFlow', 'PostgreSQL', 'Redis'],
+    title: 'Analytics Dashboard',
+    description: 'Real-time data visualization platform with predictive AI-powered reporting insights.',
+    tech: ['Next.js', 'PostgreSQL', 'Redis'],
     icon: Sparkles,
-    gradient: 'from-yellow-500 to-orange-600',
-    liveUrl: '#',
-    githubUrl: '#'
+    status: 'Coming Soon',
+    size: 'medium'
   }
 ]
 
 export function Projects() {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-  
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Royal Background */}
-      <div className="absolute inset-0 mandala-bg opacity-5" />
-      <div className="absolute top-10 right-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl" />
-      
-      <div className="relative max-w-6xl mx-auto">
+    <section id="projects" className="py-24 px-6 lg:px-12 bg-white dark:bg-[#030303] relative overflow-hidden">
+      {/* Background System Sync */}
+      <div className="absolute inset-0 opacity-[0.1] dark:opacity-[0.15] pointer-events-none" 
+           style={{ backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`, backgroundSize: '50px 50px' }} />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-2 border-orange-500/20 rounded-full text-sm font-bold text-orange-600 dark:text-orange-400 mb-8"
-            animate={isMobile ? {} : { scale: [1, 1.05, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
+        <header className="mb-20">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2 text-orange-500 font-mono text-sm mb-4"
           >
-            <Crown className="w-5 h-5" />
-            Royal Portfolio
+            <Terminal size={16} /> <span>./production-builds</span>
           </motion.div>
           
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">
-              Projects & Solutions
-            </span>
-          </h2>
-          
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Building innovative solutions with modern technologies
-          </p>
-        </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-bold dark:text-white tracking-tighter"
+          >
+            Project <br /> <span className="text-zinc-400">Architecture.</span>
+          </motion.h2>
+        </header>
 
-        {/* Projects Grid - Masonry Style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative"
+              className={`group relative p-8 rounded-[2.5rem] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 transition-all overflow-hidden ${
+                project.size === 'large' ? 'lg:col-span-2' : ''
+              }`}
             >
-              {/* Decorative corners */}
-              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-4 border-l-4 border-orange-500 rounded-tl-xl" />
-              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-4 border-r-4 border-amber-500 rounded-tr-xl" />
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-4 border-l-4 border-amber-500 rounded-bl-xl" />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-4 border-r-4 border-orange-500 rounded-br-xl" />
-              
-              <div className="relative bg-gradient-to-br from-orange-50/90 to-amber-50/90 dark:from-orange-900/30 dark:to-amber-900/30 backdrop-blur-xl rounded-3xl p-8 border-2 border-orange-300 dark:border-orange-700 hover:border-orange-400 dark:hover:border-orange-600 transition-all duration-300 shadow-xl hover:shadow-2xl h-full">
-                {/* Icon with Badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <motion.div 
-                    className={`w-16 h-16 bg-gradient-to-r ${project.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg relative`}
-                    whileHover={isMobile ? {} : { rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <project.icon size={28} />
-                    {project.featured && (
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                        <Gem className="w-3 h-3 text-orange-900" />
-                      </div>
-                    )}
-                  </motion.div>
-                  
-                  {project.featured && (
-                    <span className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold rounded-full">
-                      Featured
-                    </span>
-                  )}
+              {/* Coming Soon Overlay Effect */}
+              <div className="absolute inset-0 bg-zinc-100/50 dark:bg-black/40 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center opacity-100 group-hover:backdrop-blur-[1px] transition-all">
+                <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 px-4 py-2 rounded-2xl flex items-center gap-2 shadow-2xl">
+                  <Lock size={14} className="text-orange-500" />
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-900 dark:text-white">
+                    {project.status}
+                  </span>
                 </div>
-                
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              </div>
+
+              {/* Icon Area */}
+              <div className="mb-6 relative z-0">
+                <div className="p-4 rounded-2xl bg-orange-500/10 text-orange-500 inline-block">
+                  <project.icon size={28} />
+                </div>
+              </div>
+
+              {/* Content Area */}
+              <div className="relative z-0">
+                <h3 className="text-2xl font-bold dark:text-white mb-3 tracking-tight">
                   {project.title}
                 </h3>
-                
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-6 leading-relaxed">
                   {project.description}
                 </p>
-                
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.slice(0, 4).map((tech) => (
-                    <span 
-                      key={tech}
-                      className="px-3 py-1 text-sm font-medium bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 rounded-lg border border-orange-200/50 dark:border-orange-700/50 hover:border-orange-400 dark:hover:border-orange-500 transition-colors"
-                    >
-                      {tech}
+
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {project.tech.map((t) => (
+                    <span key={t} className="text-[10px] font-mono px-2 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 rounded-md border border-zinc-200 dark:border-zinc-700">
+                      {t}
                     </span>
                   ))}
-                  {project.tech.length > 4 && (
-                    <span className="px-3 py-1 text-sm font-medium bg-white/80 dark:bg-gray-800/80 text-gray-500 dark:text-gray-400 rounded-lg border border-orange-200/50 dark:border-orange-700/50">
-                      +{project.tech.length - 4}
-                    </span>
-                  )}
                 </div>
-                
-                {/* Links */}
-                <div className="flex gap-3">
-                  <a 
-                    href={project.liveUrl}
-                    className="flex-1 text-center py-3 px-4 bg-gradient-to-r from-orange-500 to-amber-600 text-white rounded-xl font-medium hover:from-orange-600 hover:to-amber-700 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
-                  >
-                    <ExternalLink size={16} />
-                    View
-                  </a>
-                  <a 
-                    href={project.githubUrl}
-                    className="flex-1 text-center py-3 px-4 border-2 border-orange-300 dark:border-orange-700 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <Github size={16} />
-                    Code
-                  </a>
+
+                {/* Link Placeholders */}
+                <div className="flex gap-4 opacity-30 grayscale">
+                  <div className="flex items-center gap-2 text-xs font-bold text-zinc-400 uppercase tracking-widest cursor-not-allowed">
+                    <ExternalLink size={14} /> Live
+                  </div>
+                  <div className="flex items-center gap-2 text-xs font-bold text-zinc-400 uppercase tracking-widest cursor-not-allowed">
+                    <Github size={14} /> Source
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-        
-        {/* View More Button */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+
+        {/* Bottom CTA */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mt-20 flex flex-col items-center justify-center gap-4"
         >
-          <a
-            href="/projects"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold rounded-xl hover:from-orange-600 hover:to-amber-700 transition-all duration-300 shadow-xl hover:shadow-2xl"
-          >
-            <Crown className="w-5 h-5" />
-            View All Projects
-            <Sparkles className="w-5 h-5" />
-          </a>
+          <div className="w-12 h-[1px] bg-orange-500/50" />
+          <p className="text-zinc-500 font-mono text-xs uppercase tracking-[0.3em]">
+            More developments in pipeline
+          </p>
         </motion.div>
       </div>
     </section>
