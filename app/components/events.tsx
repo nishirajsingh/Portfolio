@@ -5,111 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { Calendar, MapPin, ChevronLeft, ChevronRight, X, ArrowUpRight, Camera, Terminal } from 'lucide-react'
 
-/* ---------------- IMAGES (Imports remain same) ---------------- */
-import devfest2025_1 from './images/events/devfest-2025/1.jpg'
-import devfest2025_2 from './images/events/devfest-2025/2.jpg'
-import devfest2025_3 from './images/events/devfest-2025/3.jpg'
-import devfest2025_4 from './images/events/devfest-2025/4.jpg'
-import devfest2025_5 from './images/events/devfest-2025/5.jpg'
-import devfest2025_6 from './images/events/devfest-2025/6.jpg'
-import devfest2025_7 from './images/events/devfest-2025/7.jpg'
-
-import awsVadodara1 from './images/events/aws-vadodara/1.jpg'
-import awsVadodara2 from './images/events/aws-vadodara/2.jpg'
-import awsVadodara3 from './images/events/aws-vadodara/3.jpg'
-import awsVadodara4 from './images/events/aws-vadodara/4.jpg'
-import awsVadodara5 from './images/events/aws-vadodara/5.jpg'
-import awsVadodara6 from './images/events/aws-vadodara/6.jpg'
-import awsVadodara7 from './images/events/aws-vadodara/7.jpg'
-
-import gcp1 from './images/events/gcp-gandhinagar/1.jpg'
-import gcp2 from './images/events/gcp-gandhinagar/2.jpg'
-import gcp3 from './images/events/gcp-gandhinagar/3.jpg'
-import gcp4 from './images/events/gcp-gandhinagar/4.jpg'
-import gcp5 from './images/events/gcp-gandhinagar/5.jpg'
-
-import awsSummit1 from './images/events/aws-summit/1.jpg'
-import awsSummit2 from './images/events/aws-summit/2.jpg'
-import awsSummit3 from './images/events/aws-summit/3.jpg'
-import awsSummit4 from './images/events/aws-summit/4.jpg'
-import awsSummit5 from './images/events/aws-summit/5.jpg'
-
-import devops1 from './images/events/devops-ai/1.jpg'
-import devops2 from './images/events/devops-ai/2.jpg'
-
-import awsAhmedabad1 from './images/events/aws-ahmedabad/1.jpg'
-import awsAhmedabad2 from './images/events/aws-ahmedabad/2.jpg'
-import awsAhmedabad3 from './images/events/aws-ahmedabad/3.jpg'
-import awsAhmedabad4 from './images/events/aws-ahmedabad/4.jpg'
-import awsAhmedabad5 from './images/events/aws-ahmedabad/5.jpg'
-import awsAhmedabad6 from './images/events/aws-ahmedabad/6.jpg'
-import awsAhmedabad7 from './images/events/aws-ahmedabad/7.jpg'
-
-import devfest2024_1 from './images/events/devfest-2024/1.jpg'
-import devfest2024_2 from './images/events/devfest-2024/2.jpg'
-import devfest2024_3 from './images/events/devfest-2024/3.jpg'
-
-/* ---------------- DATA ---------------- */
-
-const events = [
-  {
-    title: 'GDG DevFest Baroda 2025',
-    date: '5 Oct 2025',
-    location: 'Baroda',
-    type: 'In-Person',
-    size: 'large',
-    images: [devfest2025_1, devfest2025_2, devfest2025_3, devfest2025_4, devfest2025_5, devfest2025_6, devfest2025_7],
-  },
-  {
-    title: 'AWS Community Day Vadodara',
-    date: '13 Sept 2025',
-    location: 'Vadodara',
-    type: 'In-Person',
-    size: 'medium',
-    images: [awsVadodara1, awsVadodara2, awsVadodara3, awsVadodara4, awsVadodara5, awsVadodara6, awsVadodara7],
-  },
-  {
-    title: 'Google Cloud Community Day',
-    date: '5 July 2025',
-    location: 'Gandhinagar',
-    type: 'In-Person',
-    size: 'small',
-    images: [gcp1, gcp2, gcp3, gcp4, gcp5],
-  },
-  {
-    title: 'AWS Summit India 2025',
-    date: '26 June 2025',
-    location: 'Virtual',
-    type: 'Online',
-    size: 'small',
-    images: [awsSummit1, awsSummit2, awsSummit3, awsSummit4, awsSummit5],
-  },
-  {
-    title: 'DevOps Meets AI',
-    date: '23 June 2025',
-    location: 'India',
-    type: 'In-Person',
-    size: 'medium',
-    images: [devops1, devops2],
-  },
-  {
-    title: 'AWS Community Day Ahmedabad',
-    date: '21 June 2025',
-    location: 'Ahmedabad',
-    type: 'In-Person',
-    size: 'small',
-    images: [awsAhmedabad1, awsAhmedabad2, awsAhmedabad3, awsAhmedabad4, awsAhmedabad5, awsAhmedabad6, awsAhmedabad7],
-  },
-  {
-    title: 'GDG DevFest Baroda 2024',
-    date: '1 Dec 2024',
-    location: 'Baroda',
-    type: 'In-Person',
-    size: 'small',
-    images: [devfest2024_1, devfest2024_2, devfest2024_3],
-  },
-]
-
 /* ---------------- BENTO CARD ---------------- */
 
 function BentoCard({ event, onClick, index }: { event: any; onClick: () => void; index: number }) {
@@ -129,12 +24,14 @@ function BentoCard({ event, onClick, index }: { event: any; onClick: () => void;
       onClick={onClick}
       className={`group relative cursor-pointer overflow-hidden rounded-[2.5rem] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 ${sizeClass}`}
     >
-      <Image
-        src={event.images[0]}
-        alt={event.title}
-        fill
-        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-      />
+      {event.images?.[0] && (
+        <Image
+          src={event.images[0]}
+          alt={event.title}
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
       
       <div className="absolute top-5 left-5">
@@ -229,7 +126,7 @@ function ImageModal({ event, onClose }: { event: any; onClose: () => void }) {
           </div>
           
           <div className="flex gap-2 overflow-x-auto max-w-full md:max-w-md pb-2 scrollbar-hide">
-            {event.images.map((img: any, i: number) => (
+            {event.images.map((img: string, i: number) => (
               <button 
                 key={i} 
                 onClick={() => setIndex(i)} 
@@ -250,7 +147,12 @@ function ImageModal({ event, onClose }: { event: any; onClose: () => void }) {
 /* ---------------- MAIN SECTION ---------------- */
 
 export function Events() {
+  const [events, setEvents] = useState<any[]>([])
   const [selected, setSelected] = useState<any>(null)
+
+  useEffect(() => {
+    fetch('/api/admin/events').then(r => r.json()).then(setEvents)
+  }, [])
 
   return (
     <section id="events" className="py-24 px-6 lg:px-12 bg-white dark:bg-[#030303] min-h-screen relative overflow-hidden">
@@ -285,7 +187,7 @@ export function Events() {
         {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[240px] gap-6">
           {events.map((event, i) => (
-            <BentoCard key={i} index={i} event={event} onClick={() => setSelected(event)} />
+            <BentoCard key={event.id} index={i} event={event} onClick={() => setSelected(event)} />
           ))}
         </div>
       </div>

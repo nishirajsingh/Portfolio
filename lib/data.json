@@ -1,0 +1,382 @@
+{
+  "certifications": [
+    {
+      "title": "India AI Impact Buildathon",
+      "issuer": "HCL GUVI",
+      "date": "FEB 2026",
+      "expiry": "",
+      "credentialId": "",
+      "link": "#",
+      "status": "completed",
+      "skills": [],
+      "image": "/images/certs/1773681635167-HCL-GUVI-Certification---4F23710q1D761CNPpk.png",
+      "id": "cert-1773681640643"
+    },
+    {
+      "id": "cert-1",
+      "title": "Gemini Certified Educator",
+      "issuer": "Google",
+      "date": "Oct 2025",
+      "expiry": "Oct 2028",
+      "credentialId": "163698809",
+      "link": "#",
+      "status": "completed",
+      "skills": [
+        "Gen AI",
+        "Education Tech"
+      ],
+      "image": "/images/certs/gemini-student.jpg"
+    },
+    {
+      "id": "cert-2",
+      "title": "Gemini Certified University Student",
+      "issuer": "Google",
+      "date": "Oct 2025",
+      "expiry": "Oct 2028",
+      "credentialId": "163699860",
+      "link": "#",
+      "status": "completed",
+      "skills": [
+        "Gemini",
+        "Google AI"
+      ],
+      "image": "/images/certs/gemini-educator.jpg"
+    },
+    {
+      "id": "cert-3",
+      "title": "Vadodara Hackathon 6.0",
+      "issuer": "PIERC - Parul University",
+      "date": "Sep 2025",
+      "expiry": "",
+      "credentialId": "",
+      "link": "#",
+      "status": "completed",
+      "skills": [
+        "Hackathon",
+        "Problem Solving"
+      ],
+      "image": "/images/certs/vadodara-hackathon-6.jpg"
+    },
+    {
+      "id": "cert-4",
+      "title": "AWS Academy Graduate - Cloud Foundations",
+      "issuer": "Amazon Web Services (AWS)",
+      "date": "Jul 2025",
+      "expiry": "",
+      "credentialId": "",
+      "link": "#",
+      "status": "completed",
+      "skills": [
+        "Cloud Foundations",
+        "AWS"
+      ],
+      "image": "/images/certs/Intro-GenAi-AWS.jpeg"
+    },
+    {
+      "id": "cert-5",
+      "title": "Introducing Generative AI with AWS",
+      "issuer": "Udacity",
+      "date": "Jul 2025",
+      "expiry": "",
+      "credentialId": "",
+      "link": "#",
+      "status": "completed",
+      "skills": [
+        "Artificial Intelligence (AI)"
+      ],
+      "image": "/images/certs/Gen-Ai.png"
+    },
+    {
+      "id": "cert-6",
+      "title": "Cyber Security and Privacy",
+      "issuer": "NPTEL",
+      "date": "DEC 2026",
+      "expiry": "",
+      "credentialId": "",
+      "link": "#",
+      "status": "completed",
+      "skills": [
+        "CyberSecurity"
+      ],
+      "image": "/images/certs/Cyber-security-nptel.png"
+    },
+    {
+      "id": "cert-7",
+      "title": "Certified Ethical Hacker (CEH)",
+      "issuer": "NPTEL",
+      "date": "Dec 2023",
+      "expiry": "",
+      "credentialId": "",
+      "link": "#",
+      "status": "completed",
+      "skills": [
+        "Ethical Hacking",
+        "Cybersecurity"
+      ],
+      "image": "/images/certs/CEH-nptel.png"
+    }
+  ],
+  "badges": [
+    {
+      "id": "badge-1",
+      "title": "AWS Cloud Quest: Cloud Practitioner",
+      "issuer": "AWS",
+      "date": "Dec 2025",
+      "image": ""
+    },
+    {
+      "id": "badge-2",
+      "title": "Develop GenAI Apps with Gemini",
+      "issuer": "Google Cloud",
+      "date": "Jun 2025",
+      "image": ""
+    },
+    {
+      "id": "badge-3",
+      "title": "Build Real World AI Applications",
+      "issuer": "Google Cloud",
+      "date": "May 2025",
+      "image": ""
+    },
+    {
+      "id": "badge-4",
+      "title": "Implement CI/CD Pipelines",
+      "issuer": "Google Cloud",
+      "date": "May 2021",
+      "image": ""
+    },
+    {
+      "id": "badge-5",
+      "title": "Monitor and Manage Resources",
+      "issuer": "Google Cloud",
+      "date": "Jun 2025",
+      "image": ""
+    },
+    {
+      "id": "badge-6",
+      "title": "Build a Secure Network",
+      "issuer": "Google Cloud",
+      "date": "Jun 2026",
+      "image": ""
+    },
+    {
+      "id": "badge-7",
+      "title": "Manage Kubernetes in GKE",
+      "issuer": "Google Cloud",
+      "date": "May 2025",
+      "image": ""
+    },
+    {
+      "id": "badge-8",
+      "title": "Infrastructure with Terraform",
+      "issuer": "Google Cloud",
+      "date": "Apr 2025",
+      "image": ""
+    }
+  ],
+  "projects": [
+    {
+      "title": "Smart Waste Management System",
+      "description": "A Django based basic web app for waste management.",
+      "tech": [
+        "Django",
+        "Python",
+        "HTML",
+        "CSS",
+        "SQLite"
+      ],
+      "icon": "Code",
+      "status": "Live",
+      "size": "large",
+      "liveUrl": "https://smart-waste-management.bytexl.live/",
+      "githubUrl": "https://github.com/nishirajsingh/Smart-Waste-Management-System/",
+      "id": "proj-1773680959881"
+    },
+    {
+      "id": "proj-2",
+      "title": "AI Chatbot Platform",
+      "description": "Intelligent NLP-driven conversational AI with context awareness and multi-language support.",
+      "tech": [
+        "Python",
+        "OpenAI",
+        "FastAPI"
+      ],
+      "icon": "Brain",
+      "status": "Coming Soon",
+      "size": "small",
+      "liveUrl": "",
+      "githubUrl": ""
+    },
+    {
+      "id": "proj-1",
+      "title": "Cloud Infrastructure Manager",
+      "description": "Automated deployment and monitoring system for multi-cloud environments. Focused on cost optimization and real-time observability.",
+      "tech": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Terraform"
+      ],
+      "icon": "Cloud",
+      "status": "Coming Soon",
+      "size": "large",
+      "liveUrl": "",
+      "githubUrl": ""
+    },
+    {
+      "id": "proj-3",
+      "title": "Serverless Gateway",
+      "description": "Event-driven API management architecture using microservices and serverless logic.",
+      "tech": [
+        "AWS Lambda",
+        "DynamoDB",
+        "Python"
+      ],
+      "icon": "Server",
+      "status": "Coming Soon",
+      "size": "small",
+      "liveUrl": "",
+      "githubUrl": ""
+    },
+    {
+      "id": "proj-4",
+      "title": "Analytics Dashboard",
+      "description": "Real-time data visualization platform with predictive AI-powered reporting insights.",
+      "tech": [
+        "Next.js",
+        "PostgreSQL",
+        "Redis"
+      ],
+      "icon": "Sparkles",
+      "status": "Coming Soon",
+      "size": "medium",
+      "liveUrl": "",
+      "githubUrl": ""
+    }
+  ],
+  "events": [
+    {
+      "title": "AWS Student Community Day 2025",
+      "date": "13 DEC 2025",
+      "location": "Parul University",
+      "type": "In-Person",
+      "size": "large",
+      "images": [
+        "/images/events/aws-student-community-day-2025/1773680703608-1.png",
+        "/images/events/aws-student-community-day-2025/1773680703660-2.png",
+        "/images/events/aws-student-community-day-2025/1773680703710-3.png",
+        "/images/events/aws-student-community-day-2025/1773680703754-4.png",
+        "/images/events/aws-student-community-day-2025/1773680703791-5.png",
+        "/images/events/aws-student-community-day-2025/1773680703828-6.png"
+      ],
+      "id": "event-1773680712724"
+    },
+    {
+      "id": "event-1",
+      "title": "GDG DevFest Baroda 2025",
+      "date": "5 Oct 2025",
+      "location": "Baroda",
+      "type": "In-Person",
+      "size": "large",
+      "images": [
+        "/images/events/devfest-2025/1.jpg",
+        "/images/events/devfest-2025/2.jpg",
+        "/images/events/devfest-2025/3.jpg",
+        "/images/events/devfest-2025/4.jpg",
+        "/images/events/devfest-2025/5.jpg",
+        "/images/events/devfest-2025/6.jpg",
+        "/images/events/devfest-2025/7.jpg"
+      ]
+    },
+    {
+      "id": "event-2",
+      "title": "AWS Community Day Vadodara",
+      "date": "13 Sept 2025",
+      "location": "Vadodara",
+      "type": "In-Person",
+      "size": "medium",
+      "images": [
+        "/images/events/aws-vadodara/1.jpg",
+        "/images/events/aws-vadodara/2.jpg",
+        "/images/events/aws-vadodara/3.jpg",
+        "/images/events/aws-vadodara/4.jpg",
+        "/images/events/aws-vadodara/5.jpg",
+        "/images/events/aws-vadodara/6.jpg",
+        "/images/events/aws-vadodara/7.jpg"
+      ]
+    },
+    {
+      "id": "event-3",
+      "title": "Google Cloud Community Day",
+      "date": "5 July 2025",
+      "location": "Gandhinagar",
+      "type": "In-Person",
+      "size": "small",
+      "images": [
+        "/images/events/gcp-gandhinagar/1.jpg",
+        "/images/events/gcp-gandhinagar/2.jpg",
+        "/images/events/gcp-gandhinagar/3.jpg",
+        "/images/events/gcp-gandhinagar/4.jpg",
+        "/images/events/gcp-gandhinagar/5.jpg"
+      ]
+    },
+    {
+      "id": "event-4",
+      "title": "AWS Summit India 2025",
+      "date": "26 June 2025",
+      "location": "Virtual",
+      "type": "Online",
+      "size": "small",
+      "images": [
+        "/images/events/aws-summit/1.jpg",
+        "/images/events/aws-summit/2.jpg",
+        "/images/events/aws-summit/3.jpg",
+        "/images/events/aws-summit/4.jpg",
+        "/images/events/aws-summit/5.jpg"
+      ]
+    },
+    {
+      "id": "event-5",
+      "title": "DevOps Meets AI",
+      "date": "23 June 2025",
+      "location": "India",
+      "type": "In-Person",
+      "size": "medium",
+      "images": [
+        "/images/events/devops-ai/1.jpg",
+        "/images/events/devops-ai/2.jpg"
+      ]
+    },
+    {
+      "id": "event-6",
+      "title": "AWS Community Day Ahmedabad",
+      "date": "21 June 2025",
+      "location": "Ahmedabad",
+      "type": "In-Person",
+      "size": "small",
+      "images": [
+        "/images/events/aws-ahmedabad/1.jpg",
+        "/images/events/aws-ahmedabad/2.jpg",
+        "/images/events/aws-ahmedabad/3.jpg",
+        "/images/events/aws-ahmedabad/4.jpg",
+        "/images/events/aws-ahmedabad/5.jpg",
+        "/images/events/aws-ahmedabad/6.jpg",
+        "/images/events/aws-ahmedabad/7.jpg"
+      ]
+    },
+    {
+      "id": "event-7",
+      "title": "GDG DevFest Baroda 2024",
+      "date": "1 Dec 2024",
+      "location": "Baroda",
+      "type": "In-Person",
+      "size": "small",
+      "images": [
+        "/images/events/devfest-2024/1.jpg",
+        "/images/events/devfest-2024/2.jpg",
+        "/images/events/devfest-2024/3.jpg"
+      ]
+    }
+  ],
+  "resume": "/resume/resume.pdf"
+}

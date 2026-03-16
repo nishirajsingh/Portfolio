@@ -6,6 +6,7 @@ import hero from './images/nishiraj.png'
 import { Cloud, Binary, Code2, Sparkles, Terminal as TerminalIcon, Cpu } from 'lucide-react'
 import { EnhancedButton } from './ui/enhanced-button'
 import { useEffect, useState } from 'react'
+import { Download } from 'lucide-react'
 
 const codeLines = [
   { text: 'const dev = new Developer("Nishiraj");', color: 'text-blue-400' },
@@ -16,12 +17,17 @@ const codeLines = [
 
 export function Hero() {
   const [lineIndex, setLineIndex] = useState(0)
+  const [resumeUrl, setResumeUrl] = useState<string | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setLineIndex((prev) => (prev + 1) % codeLines.length)
     }, 3000)
     return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    fetch('/api/admin/resume').then(r => r.json()).then(d => setResumeUrl(d.url))
   }, [])
 
   return (
@@ -82,6 +88,15 @@ export function Hero() {
             <EnhancedButton variant="secondary" size="xl" href="/contact" className="rounded-2xl px-8 backdrop-blur-md">
               Get in Touch
             </EnhancedButton>
+            {resumeUrl && (
+              <a
+                href={resumeUrl}
+                download
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-orange-500 hover:text-orange-500 dark:hover:text-orange-400 transition-all text-sm font-semibold"
+              >
+                <Download size={16} /> Download Resume
+              </a>
+            )}
           </motion.div>
 
           {/* Tech Stack Indicator */}
