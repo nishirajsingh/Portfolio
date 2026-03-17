@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import {
   Cloud,
   Brain,
@@ -51,18 +52,18 @@ export function About() {
     >
       {/* 1. Background System Sync with Hero */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute inset-0 opacity-[0.1] dark:opacity-[0.15]" 
-          style={{ 
-            backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`, 
-            backgroundSize: '50px 50px' 
-          }} 
+        <div
+          className="absolute inset-0 opacity-[0.1] dark:opacity-[0.15]"
+          style={{
+            backgroundImage: `linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}
         />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_60%,rgba(249,115,22,0.05),transparent_50%)]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Header - Modern Left Aligned */}
         <div className="mb-20">
           <motion.div
@@ -74,7 +75,7 @@ export function About() {
             <Sparkles size={16} />
             <span className="tracking-[0.2em] uppercase">The Persona</span>
           </motion.div>
-          
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -101,13 +102,13 @@ export function About() {
           >
             <div className="space-y-6">
               <p className="text-xl md:text-2xl text-zinc-700 dark:text-zinc-300 leading-relaxed font-medium">
-                I’m <span className="text-zinc-900 dark:text-white font-bold underline decoration-orange-500/30 decoration-4">Nishiraj Singh Panwar</span>, 
+                I’m <span className="text-zinc-900 dark:text-white font-bold underline decoration-orange-500/30 decoration-4">Nishiraj Singh Panwar</span>,
                 a developer focused on building scalable cloud platforms and intelligent AI-powered applications.
               </p>
 
               <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                My journey evolved from mastering web security fundamentals to engineering 
-                complex production systems. I specialize in turning architectural challenges 
+                My journey evolved from mastering web security fundamentals to engineering
+                complex production systems. I specialize in turning architectural challenges
                 into clean, optimized, and scalable codebases.
               </p>
             </div>
@@ -128,11 +129,16 @@ export function About() {
               </div>
             </div>
 
-            <motion.div 
+            <motion.div
               whileHover={{ x: 10 }}
-              className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-500 font-bold cursor-pointer pt-4 group"
+              className="pt-4 inline-block"
             >
-              Learn more about my process <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+              <Link
+                href="/profile"
+                className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-500 font-bold cursor-pointer group"
+              >
+                Learn more about my process <ChevronRight className="group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -150,7 +156,7 @@ export function About() {
               >
                 {/* Subtle Background Glow on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                
+
                 <div className="flex items-start gap-5 relative z-10">
                   <div className={`p-4 rounded-2xl ${skill.bg} ${skill.color} transition-colors`}>
                     <skill.icon size={24} />
