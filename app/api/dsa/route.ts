@@ -3,11 +3,11 @@ import { NextResponse } from 'next/server'
 async function fetchLeetCode() {
   try {
     const [profile, solved, contest, calendar, badges] = await Promise.all([
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh', { next: { revalidate: 3600 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/solved', { next: { revalidate: 3600 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/contest', { next: { revalidate: 3600 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/calendar', { next: { revalidate: 3600 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/badges', { next: { revalidate: 3600 } }).then(r => r.json()),
+      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh', { next: { revalidate: 360 } }).then(r => r.json()),
+      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/solved', { next: { revalidate: 360 } }).then(r => r.json()),
+      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/contest', { next: { revalidate: 360 } }).then(r => r.json()),
+      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/calendar', { next: { revalidate: 360 } }).then(r => r.json()),
+      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/badges', { next: { revalidate: 360 } }).then(r => r.json()),
     ])
     return {
       username: 'nishirajsingh',
