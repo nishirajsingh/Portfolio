@@ -147,15 +147,6 @@ export function EnhancedNavbar() {
               )
             })}
             
-            <div className="w-[1px] h-6 bg-zinc-200 dark:bg-zinc-800 mx-1.5" />
-            
-            <motion.button 
-              whileTap={{ rotate: 90, scale: 0.8 }}
-              onClick={toggleTheme}
-              className="w-12 h-12 flex items-center justify-center rounded-2xl bg-zinc-100 dark:bg-zinc-800 text-zinc-500"
-            >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-            </motion.button>
           </div>
         </motion.div>
       </div>
