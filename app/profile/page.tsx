@@ -106,7 +106,7 @@ function ContestRow({ contest, rating }: any) {
         <p className="text-sm font-medium dark:text-white">{contest.contest.title}</p>
         <p className="text-[10px] text-zinc-400 font-mono mt-0.5">
           {date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
-          {' · '}Rank: <span className="text-orange-500">{contest.ranking.toLocaleString()}</span>
+          {' · '}Rank: <span className="text-orange-500">{contest.ranking?.toLocaleString() || '—'}</span>
           {' · '}Solved: {contest.problemsSolved}/{contest.totalProblems}
         </p>
       </div>

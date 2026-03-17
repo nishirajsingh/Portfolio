@@ -1,36 +1,104 @@
 import { NextResponse } from 'next/server'
 
-async function fetchLeetCode() {
+async function fetchLeetCodeGraphQL(query: string, variables: object) {
   try {
-    const [profile, solved, contest, calendar, badges] = await Promise.all([
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh', { next: { revalidate: 360 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/solved', { next: { revalidate: 360 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/contest', { next: { revalidate: 360 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/calendar', { next: { revalidate: 360 } }).then(r => r.json()),
-      fetch('https://alfa-leetcode-api.onrender.com/nishirajsingh/badges', { next: { revalidate: 360 } }).then(r => r.json()),
-    ])
-    return {
-      username: 'nishirajsingh',
-      name: profile.name,
-      avatar: profile.avatar,
-      ranking: profile.ranking,
-      solved: solved.solvedProblem,
-      easy: solved.easySolved,
-      medium: solved.mediumSolved,
-      hard: solved.hardSolved,
-      totalSubmissions: solved.totalSubmissionNum?.[0]?.submissions || 0,
-      contestRating: Math.round(contest.contestRating),
-      contestAttend: contest.contestAttend,
-      contestTopPercentage: contest.contestTopPercentage,
-      contestParticipation: contest.contestParticipation || [],
-      streak: calendar.streak,
-      totalActiveDays: calendar.totalActiveDays,
-      submissionCalendar: JSON.parse(calendar.submissionCalendar || '{}'),
-      badges: badges.badges || [],
-      badgesCount: badges.badgesCount || 0,
-      profileUrl: 'https://leetcode.com/u/nishirajsingh/',
+    const res = await fetch('https://leetcode.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        'Referer': 'https://leetcode.com/'
+      },
+      body: JSON.stringify({ query, variables }),
+      next: { revalidate: 3600 } // Cache for 1 hour
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (error) {
+    console.error("LeetCode GraphQL Error:", error);
+    return null;
+  }
+}
+
+async function fetchLeetCode(username = 'nishirajsingh') {
+  const queryProfile = `
+    query getUserProfile($username: String!) {
+      matchedUser(username: $username) {
+        profile { realName, userAvatar, ranking }
+        submitStats { acSubmissionNum { difficulty, count, submissions } }
+        badges { id, name }
+      }
+      userContestRanking(username: $username) {
+        attendedContestsCount, rating, topPercentage
+      }
     }
-  } catch { return null }
+  `;
+  const queryCalendar = `
+    query userProfileCalendar($username: String!) {
+      matchedUser(username: $username) {
+        userCalendar { streak, totalActiveDays, submissionCalendar }
+      }
+    }
+  `;
+
+  const queryContests = `
+    query userContestRankingInfo($username: String!) {
+      userContestRankingHistory(username: $username) {
+        attended, rating, trendDirection, problemsSolved, totalProblems
+        contest { title, startTime }
+      }
+    }
+  `;
+
+  try {
+    // Fetch all three directly from LeetCode simultaneously
+    const [profileData, calendarData, contestsData] = await Promise.all([
+      fetchLeetCodeGraphQL(queryProfile, { username }),
+      fetchLeetCodeGraphQL(queryCalendar, { username }),
+      fetchLeetCodeGraphQL(queryContests, { username })
+    ]);
+
+    const user = profileData?.data?.matchedUser;
+    const contest = profileData?.data?.userContestRanking;
+    const calendar = calendarData?.data?.matchedUser?.userCalendar;
+    const contestHistory = contestsData?.data?.userContestRankingHistory || [];
+
+    if (!user) return null; // Fallback if user doesn't exist
+
+    // Parse difficulty stats safely
+    const stats = user.submitStats?.acSubmissionNum || [];
+    const getStat = (diff: string) => stats.find((s: any) => s.difficulty === diff);
+
+    return {
+      username: username,
+      name: user.profile?.realName || 'Nishiraj Singh Panwar',
+      avatar: user.profile?.userAvatar || '',
+      ranking: user.profile?.ranking || 0,
+      solved: getStat('All')?.count || 0,
+      easy: getStat('Easy')?.count || 0,
+      medium: getStat('Medium')?.count || 0,
+      hard: getStat('Hard')?.count || 0,
+      totalSubmissions: getStat('All')?.submissions || 0,
+      
+      contestRating: contest?.rating ? Math.round(contest.rating) : 0,
+      contestAttend: contest?.attendedContestsCount || 0,
+      contestTopPercentage: contest?.topPercentage || null,
+      
+      // Filter out unattended contests to match the format your frontend expects
+      contestParticipation: contestHistory.filter((c: any) => c.attended) || [],
+      
+      streak: calendar?.streak || 0,
+      totalActiveDays: calendar?.totalActiveDays || 0,
+      submissionCalendar: calendar?.submissionCalendar ? JSON.parse(calendar.submissionCalendar) : {},
+      
+      badges: user.badges || [],
+      badgesCount: user.badges?.length || 0,
+      profileUrl: `https://leetcode.com/u/${username}/`,
+    };
+  } catch (error) {
+    console.error("LeetCode Aggregation Error:", error);
+    return null;
+  }
 }
 
 async function fetchCodeForces() {
