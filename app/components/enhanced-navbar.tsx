@@ -6,7 +6,7 @@ import {
   Moon, Sun, User, FolderOpen, 
   Briefcase, Calendar, MessageCircle,
   Sparkles, Award, GraduationCap,
-  Command
+  Command, Code2
 } from 'lucide-react'
 import { useTheme } from './theme-provider' 
 import { MagneticButton } from './ui/magnetic-button' 
@@ -17,6 +17,7 @@ import { usePathname } from 'next/navigation'
 const NAVIGATION_ITEMS = [
   { name: 'About', href: '/#about' },
   { name: 'Projects', href: '/projects' },
+  { name: 'DSA', href: '/profile' },
   { name: 'Experience', href: '/experience' },
   { name: 'Certifications', href: '/certifications' },
   { name: 'Events', href: '/events' },
@@ -26,6 +27,7 @@ const NAVIGATION_ITEMS = [
 const NAVIGATION_DOCK_ITEMS = [
   { title: 'Home', icon: <User size={20} />, href: '/' },
   { title: 'Works', icon: <FolderOpen size={20} />, href: '/projects' },
+  { title: 'DSA', icon: <Code2 size={20} />, href: '/profile' },
   { title: 'Exp', icon: <Briefcase size={20} />, href: '/experience' },
   { title: 'Awards', icon: <Award size={20} />, href: '/certifications' },
   { title: 'Mail', icon: <MessageCircle size={20} />, href: '/contact' },
