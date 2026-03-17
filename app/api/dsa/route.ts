@@ -164,7 +164,7 @@ async function fetchGFG() {
     }).then(r => r.text())
 
     // Extract __NEXT_DATA__ JSON embedded in the page
-    const match = html.match(/<script id="__NEXT_DATA__" type="application\/json">(.+?)<\/script>/s)
+    const match = html.match(/<script id="__NEXT_DATA__" type="application\/json">(.+?)<\/script>/)
     if (!match) return null
 
     const nextData = JSON.parse(match[1])
