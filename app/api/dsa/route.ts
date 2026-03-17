@@ -51,36 +51,67 @@ async function fetchCodeForces() {
   } catch { return null }
 }
 
-async function fetchCodeChef() {
+async function fetchCodeChef(username: string = 'nishirajsingh') {
   try {
-    const html = await fetch('https://www.codechef.com/users/nishirajsingh', {
+    const html = await fetch(`https://www.codechef.com/users/${username}`, {
       headers: { 'User-Agent': 'Mozilla/5.0' },
       next: { revalidate: 3600 }
-    }).then(r => r.text())
+    }).then(r => r.text());
 
-    // Extract rating from embedded JS
-    const ratingMatch = html.match(/"rating":"(\d+)"[^}]*"rank":"(\d+)"[^}]*"name":"([^"]+)"/)
-    const allRatings: any[] = []
-    const ratingsMatch = html.match(/var all_rating = (\[.*?\]);/)
+    // 1. Rating Extractions (Added TS types back to fix the error)
+    const allRatings: any[] = [];
+    const ratingsMatch = html.match(/var all_rating = (\[.*?\]);/);
     if (ratingsMatch) {
       try {
-        const parsed = JSON.parse(ratingsMatch[1])
-        parsed.forEach((c: any) => allRatings.push(c))
+        const parsed = JSON.parse(ratingsMatch[1]);
+        parsed.forEach((c: any) => allRatings.push(c));
       } catch {}
     }
-    const lastContest = allRatings[allRatings.length - 1]
-    const currentRating = lastContest ? parseInt(lastContest.rating) : 1179
-    const globalRankMatch = html.match(/href="\/ratings\/all"><strong>(\d+)<\/strong>/)
+    
+    const lastContest = allRatings[allRatings.length - 1];
+    const currentRating = lastContest ? parseInt(lastContest.rating) : 1179;
+    const globalRankMatch = html.match(/href="\/ratings\/all"><strong>(\d+)<\/strong>/);
+
+    // 2. Extract Total Problems Solved
+    let totalProblemsSolved = 0;
+    const solvedMatch = html.match(/Fully Solved\s*[^0-9]*(\d+)/i) || 
+                        html.match(/Total Problems Solved[^0-9]*(\d+)/i);
+    if (solvedMatch) {
+      totalProblemsSolved = parseInt(solvedMatch[1], 10);
+    }
+
+    // 3. Extract Active Days from Heatmap Data
+    let activeDays = 0;
+    const heatmapMatch = html.match(/var\s+(heatMap|userDailySubmissions)\s*=\s*(\[.*?\]|\{.*?\});/);
+    if (heatmapMatch) {
+      try {
+        const heatmapData = JSON.parse(heatmapMatch[2]);
+        activeDays = Array.isArray(heatmapData) 
+          ? heatmapData.length 
+          : Object.keys(heatmapData).length;
+      } catch {}
+    }
+
+    // Safely calculate highest rating to avoid -Infinity errors if array is empty
+    const highestRating = allRatings.length > 0 
+      ? Math.max(...allRatings.map((c: any) => parseInt(c.rating)), currentRating)
+      : currentRating;
+
     return {
-      username: 'nishirajsingh',
+      username: username,
       rating: currentRating,
-      highestRating: Math.max(...allRatings.map((c: any) => parseInt(c.rating)), currentRating),
+      highestRating: highestRating,
       globalRank: globalRankMatch ? parseInt(globalRankMatch[1]) : null,
       contestCount: allRatings.length,
       contests: allRatings,
-      profileUrl: 'https://www.codechef.com/users/nishirajsingh',
-    }
-  } catch { return null }
+      totalProblemsSolved, 
+      activeDays,          
+      profileUrl: `https://www.codechef.com/users/${username}`,
+    };
+  } catch (error) { 
+    console.error("CodeChef Fetch Error:", error);
+    return null; 
+  }
 }
 
 async function fetchGitHub() {
@@ -134,11 +165,14 @@ async function fetchHackerRank() {
       score: s.practice.score,
       rank: s.practice.rank,
     }))
+    const badgeModels = badges.models || []
+    const totalProblemsSolved = badgeModels.reduce((sum: number, b: any) => sum + (b.solved || 0), 0)
     return {
       username: 'nishirajsingh',
       name: m.name,
       avatar: m.avatar,
       level: m.level,
+      totalProblemsSolved,
       badges: (badges.models || []).map((b: any) => ({
         name: b.badge_name,
         stars: b.stars,
@@ -151,49 +185,43 @@ async function fetchHackerRank() {
   } catch { return null }
 }
 
-async function fetchGFG() {
+async function fetchGFG(username = 'nishirajsingh') {
   try {
-    // GFG blocks server-side requests to their API — scrape __NEXT_DATA__ from profile page instead
-    const html = await fetch('https://www.geeksforgeeks.org/user/nishirajsingh/', {
+    // Using the working API you found
+    const url = `https://gfgstatscard.vercel.app/${username}?raw=true`;
+    
+    const response = await fetch(url, {
+      next: { revalidate: 3600 }, // Caches the fetch for 1 hour
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        'Accept': 'text/html',
-        'Accept-Language': 'en-US,en;q=0.9',
-      },
-      next: { revalidate: 3600 },
-    }).then(r => r.text())
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        'Accept': 'application/json'
+      }
+    });
 
-    // Extract __NEXT_DATA__ JSON embedded in the page
-    const match = html.match(/<script id="__NEXT_DATA__" type="application\/json">(.+?)<\/script>/)
-    if (!match) return null
-
-    const nextData = JSON.parse(match[1])
-    const props = nextData?.props?.pageProps
-    if (!props) return null
-
-    // GFG profile page structure
-    const info = props.userInfo || props.profileInfo || props
-    const solvedStats = props.solvedStats || info?.solvedStats
-    const streakData = props.streakData || info?.streakData
-
-    const totalSolved = solvedStats?.overall?.count ||
-      (solvedStats?.easy?.count || 0) + (solvedStats?.medium?.count || 0) + (solvedStats?.hard?.count || 0) ||
-      info?.totalProblemsSolved || 0
-
-    return {
-      username: 'nishirajsingh',
-      totalProblemsSolved: totalSolved,
-      easy: solvedStats?.easy?.count || 0,
-      medium: solvedStats?.medium?.count || 0,
-      hard: solvedStats?.hard?.count || 0,
-      codingScore: info?.codingScore || props?.codingScore || 0,
-      streak: streakData?.currentStreak || info?.currentStreak || 0,
-      maxStreak: streakData?.longestStreak || info?.longestStreak || 0,
-      instituteRank: info?.instituteRank || props?.instituteRank || null,
-      monthlySolved: info?.monthlySolved || 0,
-      profileUrl: 'https://www.geeksforgeeks.org/user/nishirajsingh/',
+    if (!response.ok) {
+      console.warn(`API responded with status: ${response.status}`);
+      return null;
     }
-  } catch { return null }
+
+    const data = await response.json();
+    
+    return {
+      username: username,
+      totalProblemsSolved: data.totalProblemsSolved || data.total_problems_solved || 0,
+      easy: data.easy || data.easy_questions_solved || 0,
+      medium: data.medium || data.medium_questions_solved || 0,
+      hard: data.hard || data.hard_questions_solved || 0,
+      codingScore: data.total_score || data.codingScore || data.score || 0,
+      streak: data.streak || data.current_streak || 0,
+      maxStreak: data.maxStreak || data.max_streak || data.longest_streak || 0,
+      instituteRank: data.instituteRank || data.institute_rank || data.rank || null,
+      monthlySolved: data.monthlySolved || data.monthly_solved || 0,
+      profileUrl: `https://www.geeksforgeeks.org/user/${username}/`,
+    };
+  } catch (error) {
+    console.error('Error fetching from GFG Stats Card API:', error);
+    return null;
+  }
 }
 
 export async function GET() {

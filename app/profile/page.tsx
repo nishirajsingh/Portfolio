@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import {
   Terminal, ExternalLink, Github, Code2, Trophy, Flame,
-  Calendar, Star, TrendingUp, BarChart3, Globe, Zap
+  Calendar, Star, TrendingUp, BarChart3, Globe, Zap, Activity
 } from 'lucide-react'
 import nishirajPhoto from '../components/images/nishiraj.png'
 import { EnhancedNavbar } from '../components/enhanced-navbar'
@@ -163,7 +163,7 @@ export default function ProfilePage() {
   const hr = data?.hackerrank
   const gfg = data?.gfg
 
-  const totalSolved = (lc?.solved || 0) + (gfg?.totalProblemsSolved || 0) + (hr?.activeTracks?.reduce((s: number, t: any) => s + (t.solved || 0), 0) || 0)
+  const totalSolved = (lc?.solved || 0) + (gfg?.totalProblemsSolved || 0)+(cc?.totalProblemsSolved || 0) + (hr?.totalProblemsSolved || 0)
   const totalSubmissions = (lc?.totalSubmissions || 0)
   const totalActiveDays = (lc?.totalActiveDays || 0)
 
@@ -261,10 +261,10 @@ export default function ProfilePage() {
             ) : (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <StatCard label="Total Solved" value={totalSolved} icon={Code2} color="text-orange-500" sub={`LC:${lc?.solved || 0} GFG:${gfg?.totalProblemsSolved || 0}`} />
+                <StatCard label="Total Solved" value={totalSolved} icon={Code2} color="text-orange-500" sub={`LC:${lc?.solved || 0} GFG:${gfg?.totalProblemsSolved || 0} CC:${cc?.totalProblemsSolved || 0} HR:${hr?.totalProblemsSolved || 0}`} />
                 <StatCard label="Active Days" value={totalActiveDays} icon={Calendar} color="text-blue-500" sub="LeetCode" />
                 <StatCard label="LC Submissions" value={totalSubmissions} icon={BarChart3} color="text-purple-500" />
-                <StatCard label="Current Streak" value={lc?.streak ? `${lc.streak}d` : '—'} icon={Flame} color="text-red-500" sub={gfg?.streak ? `GFG: ${gfg.streak}d` : undefined} />
+                <StatCard label="Max Streak" value={lc?.streak ? `${lc.streak}d` : '—'} icon={Flame} color="text-red-500" sub={gfg?.streak ? `GFG: ${gfg.streak}d` : undefined} />
               </motion.div>
             )}
 
@@ -399,15 +399,15 @@ export default function ProfilePage() {
               </motion.div>
             )}
 
-            {/* GeeksForGeeks Section */}
-            {!loading && gfg && (
+            {/* CodeChef Section */}
+            {!loading && cc && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 className="p-6 rounded-[2rem] border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-2 text-orange-500 font-mono text-sm">
-                    <Code2 size={16} /><span>GeeksForGeeks</span>
+                    <Trophy size={16} /><span>CodeChef</span>
                   </div>
-                  <a href="https://www.geeksforgeeks.org/profile/nishirajsingh" target="_blank" rel="noopener noreferrer"
+                  <a href={`https://www.codechef.com/users/${cc.username || 'nishirajsingh'}`} target="_blank" rel="noopener noreferrer"
                     className="text-xs text-zinc-400 hover:text-orange-500 transition-colors flex items-center gap-1">
                     Profile <ExternalLink size={12} />
                   </a>
@@ -415,10 +415,10 @@ export default function ProfilePage() {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { label: 'Problems Solved', value: gfg.totalProblemsSolved, icon: Code2, color: 'text-green-500' },
-                    { label: 'Coding Score', value: gfg.codingScore, icon: Trophy, color: 'text-orange-500' },
-                    { label: 'Current Streak', value: gfg.streak ? `${gfg.streak}d` : '—', icon: Flame, color: 'text-red-500' },
-                    { label: 'Max Streak', value: gfg.maxStreak ? `${gfg.maxStreak}d` : '—', icon: Zap, color: 'text-yellow-500' },
+                    { label: 'Current Rating', value: cc.rating, icon: Trophy, color: 'text-orange-500' },
+                    { label: 'Highest Rating', value: cc.highestRating, icon: Star, color: 'text-yellow-500' },
+                    { label: 'Problems Solved', value: cc.totalProblemsSolved, icon: Code2, color: 'text-green-500' },
+                    { label: 'Total Contests', value: cc.contestCount, icon: Activity, color: 'text-blue-500' },
                   ].map(({ label, value, icon: Icon, color }) => (
                     <div key={label} className="p-4 rounded-2xl bg-zinc-50 dark:bg-zinc-800/50 text-center">
                       <Icon size={16} className={`${color} mx-auto mb-2`} />
@@ -428,10 +428,10 @@ export default function ProfilePage() {
                   ))}
                 </div>
 
-                {gfg.instituteRank && (
+                {cc.globalRank && (
                   <div className="mt-4 p-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 flex items-center justify-between">
-                    <span className="text-xs text-zinc-500 font-mono">Institute Rank</span>
-                    <span className="text-sm font-bold text-orange-500">#{gfg.instituteRank}</span>
+                    <span className="text-xs text-zinc-500 font-mono">Global Rank</span>
+                    <span className="text-sm font-bold text-orange-500">#{cc.globalRank.toLocaleString()}</span>
                   </div>
                 )}
               </motion.div>
