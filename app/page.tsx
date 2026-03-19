@@ -7,7 +7,7 @@ import { About } from './components/about'
 import { Skills } from './components/skills'
 import { Footer } from './components/footer'
 import Link from 'next/link'
-import { LucideIcon, FolderOpen, Briefcase, Award, Calendar, MessageCircle, ArrowRight, Compass } from 'lucide-react'
+import { LucideIcon, FolderOpen, Briefcase, Award, Calendar, MessageCircle, ArrowRight, Compass , Code2} from 'lucide-react'
 
 export default function Home() {
   return (
@@ -59,12 +59,20 @@ export default function Home() {
               index={1}
             />
             <ExploreCard
+              title="DSA"
+              desc="Explore My Progress"
+              href="/profile"
+              icon={Code2}
+              span="md:col-span-6 lg:col-span-2"
+              index={2}
+            />
+            <ExploreCard
               title="Certifications"
               desc="Credentials"
               href="/certifications"
               icon={Award}
               span="md:col-span-3 lg:col-span-2"
-              index={2}
+              index={3}
             />
             <ExploreCard
               title="Events"
@@ -72,7 +80,7 @@ export default function Home() {
               href="/events"
               icon={Calendar}
               span="md:col-span-3 lg:col-span-2"
-              index={3}
+              index={4}
             />
             <ExploreCard
               title="Contact"
@@ -81,7 +89,7 @@ export default function Home() {
               icon={MessageCircle}
               span="md:col-span-6 lg:col-span-2"
               isPrimary
-              index={4}
+              index={5}
             />
           </div>
         </div>

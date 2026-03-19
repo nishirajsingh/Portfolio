@@ -30,7 +30,7 @@ const CONTACT_INFO = [
   { 
     icon: MapPin, 
     label: 'Location', 
-    value: 'Vadodara, India', 
+    value: 'Ratlam, Madhya Pradesh, India', 
     href: '#', 
     color: 'text-orange-600',
     bg: 'bg-orange-600/10' 
