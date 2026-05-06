@@ -7,32 +7,26 @@ import { ExternalLink, Calendar, ShieldCheck, Zap, Terminal, X, Search } from 'l
 import { EnhancedNavbar } from '../components/enhanced-navbar'
 import { Footer } from '../components/footer'
 
-const BADGES = [
-  { title: "AWS Cloud Quest: Cloud Practitioner", issuer: "AWS Training & Certification", date: "Dec 17, 2025", image: "https://images.credly.com/images/30816e43-2550-4e1c-be22-3f03c5573bb9/blob", link: "https://www.credly.com/badges/a389dba4-e540-4907-a29a-296dea078f76" },
-  { title: "AWS Educate Introduction to Cloud 101", issuer: "AWS Training & Certification", date: "Jul 30, 2025", image: "https://images.credly.com/images/e51a8579-188d-4363-8ed1-12ad164ef57b/blob", link: "https://www.credly.com/badges/5f2a9c86-b8c4-4308-afc7-6b6f0b82e56a" },
-  { title: "AWS Academy Graduate - Cloud Foundations", issuer: "AWS Training & Certification", date: "Jul 28, 2025", image: "https://images.credly.com/images/e3541a0c-dd4a-4820-8052-5001006efc85/blob", link: "https://www.credly.com/badges/87264ef3-a415-441a-aa2d-84ba97c42d3c" },
-  { title: "AWS Educate Machine Learning Foundations", issuer: "AWS Training & Certification", date: "Jul 18, 2025", image: "https://images.credly.com/images/247efe36-9fa6-4209-ad56-0fd522283872/blob", link: "https://www.credly.com/badges/9af0bdc7-1923-4d6b-b41b-f7678b437191" },
-  { title: "Build Google Cloud Infrastructure for Azure Professionals", issuer: "Google Cloud", date: "Jun 27, 2025", image: "https://images.credly.com/images/b734b28a-683b-43f2-bb9d-2b952890e545/image.png", link: "https://www.credly.com/badges/0f9595df-253a-418c-8cc2-f67344507383" },
-  { title: "Develop Serverless Apps with Firebase", issuer: "Google Cloud", date: "Jun 27, 2025", image: "https://images.credly.com/images/826e89a5-1a1d-4e6c-b740-531957965a78/image.png", link: "https://www.credly.com/badges/49bb637d-165b-4996-976c-de2f87b8960e" },
-  { title: "Monitor and Manage Google Cloud Resources", issuer: "Google Cloud", date: "Jun 27, 2025", image: "https://images.credly.com/images/c07b49a7-c295-4e2a-9557-09c22032e3ae/image.png", link: "https://www.credly.com/badges/39d2a919-2773-4580-a31f-55b8237ef38a" },
-  { title: "Build a Secure Google Cloud Network", issuer: "Google Cloud", date: "Jun 26, 2025", image: "https://images.credly.com/images/e1131ae3-4a52-4af1-9801-b7853767cf79/image.png", link: "https://www.credly.com/badges/cc442bce-9792-4abd-8ad6-924c2a522464" },
-  { title: "Develop GenAI Apps with Gemini and Streamlit", issuer: "Google Cloud", date: "Jun 5, 2025", image: "https://images.credly.com/images/1dbef1bd-cdb0-40e1-bff4-8200448c3161/blob", link: "https://www.credly.com/badges/ebf5ff47-2a16-4f17-bbcf-6a8e9c71a2fe" },
-  { title: "Implement CI/CD Pipelines on GC", issuer: "Google Cloud", date: "May 21, 2025", image: "https://images.credly.com/images/0daf1b0e-28c3-4102-96cf-e9d5f9213cc3/image.png", link: "https://www.credly.com/badges/554a4b6e-5e08-4630-8992-303c014efb0f" },
-  { title: "Manage Kubernetes in Google Cloud", issuer: "Google Cloud", date: "May 9, 2025", image: "https://images.credly.com/images/20cd679d-43c3-460e-979a-8feba38eaba6/image.png", link: "https://www.credly.com/badges/1f8017f4-5d35-45ba-89fd-6480f5a4721f" },
-  { title: "Infrastructure with Terraform on GC", issuer: "Google Cloud", date: "Apr 24, 2025", image: "https://images.credly.com/images/b18154fb-9bd3-47e5-a6f1-554be512947d/image.png", link: "https://www.credly.com/badges/c6bac894-eb0f-476c-8440-eabc71069bff" },
-  { title: "Deploy Kubernetes Applications on GC", issuer: "Google Cloud", date: "Apr 23, 2025", image: "https://images.credly.com/images/f0388a0c-130f-47cd-8750-d6357e907e58/image.png", link: "https://www.credly.com/badges/c14e2327-390b-49df-8cb6-2ce592466b94" },
-  { title: "Prompt Design in Vertex AI", issuer: "Google Cloud", date: "Apr 25, 2025", image: "https://images.credly.com/images/cef82b2e-970a-4318-8e59-c3e26b7f5c19/image.png", link: "https://www.credly.com/badges/24c7dd88-712c-4a79-a106-006b7e6f3989" },
-  { title: "Networking Fundamentals on GC", issuer: "Google Cloud", date: "Dec 10, 2024", image: "https://images.credly.com/images/6edf3d92-7a1f-425f-aa2b-d17223df9cf7/image.png", link: "https://www.credly.com/badges/e3aeb888-8c46-464d-b1d8-a5766ccb8022" },
-  { title: "Basics of Google Cloud Compute", issuer: "Google Cloud", date: "Nov 12, 2024", image: "https://images.credly.com/images/7623fefd-ebbd-4d8f-a053-f41dca852d9e/image.png", link: "https://www.credly.com/badges/7cd4f349-ff5e-47cc-9ca8-feb1519b1a22" },
-]
+
 
 export default function CertificationsPage() {
   const [certifications, setCertifications] = useState<any[]>([])
+  const [badges, setBadges] = useState<any[]>([])
+  const [badgesLoading, setBadgesLoading] = useState(true)
   const [selectedImg, setSelectedImg] = useState<string | null>(null)
+  const [filter, setFilter] = useState('All')
 
   useEffect(() => {
     fetch('/api/admin/certifications').then(r => r.json()).then(setCertifications)
+    fetch('/api/credly')
+      .then(r => r.json())
+      .then(d => { setBadges(d.badges || []); setBadgesLoading(false) })
+      .catch(() => setBadgesLoading(false))
   }, [])
+
+  // Unique issuers for filter tabs
+  const issuers = ['All', ...Array.from(new Set(badges.map((b: any) => b.issuer))).sort()]
+  const filteredBadges = filter === 'All' ? badges : badges.filter((b: any) => b.issuer === filter)
 
   return (
     <main className="min-h-screen bg-white dark:bg-[#030303]">
@@ -104,39 +98,94 @@ export default function CertificationsPage() {
             ))}
           </div>
 
-          {/* Badges — hardcoded Credly data */}
+          {/* Badges — live from Credly API */}
           <div className="border-t border-zinc-200 dark:border-zinc-800 pt-24">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
               <div>
                 <h2 className="text-4xl font-bold dark:text-white tracking-tight flex items-center gap-3">
-                  System Badges <Zap className="text-orange-500 fill-orange-500" size={24} />
+                  Digital Badges <Zap className="text-orange-500 fill-orange-500" size={24} />
                 </h2>
-                <p className="text-zinc-500 mt-2 font-mono text-sm">// Verified via Credly.com profile</p>
+                <p className="text-zinc-500 mt-2 font-mono text-sm">
+                  // Auto-synced from{' '}
+                  <a href="https://www.credly.com/users/nishiraj/badges" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:underline">Credly.com</a>
+                  {!badgesLoading && <span className="ml-2 text-zinc-400">· {badges.length} badges earned</span>}
+                </p>
               </div>
+              <a href="https://www.credly.com/users/nishiraj/badges" target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-orange-500/30 text-orange-500 text-xs font-mono hover:bg-orange-500/10 transition-colors shrink-0">
+                View all on Credly <ExternalLink size={12} />
+              </a>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {BADGES.map((badge, i) => (
-                <motion.a
-                  key={i}
-                  href={badge.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="relative p-6 rounded-[2rem] border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 backdrop-blur-sm group flex flex-col items-center text-center overflow-hidden hover:border-orange-500/40 transition-all shadow-sm"
-                >
-                  <div className="relative w-24 h-24 mb-4 grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:rotate-3">
-                    <img src={badge.image} alt={badge.title} className="w-full h-full object-contain" />
-                  </div>
-                  <h4 className="text-[10px] font-bold dark:text-zinc-300 leading-tight mb-2 uppercase tracking-tight h-10 overflow-hidden line-clamp-3 group-hover:text-orange-500 transition-colors">
-                    {badge.title}
-                  </h4>
-                  <div className="mt-auto pt-3 border-t border-zinc-100 dark:border-zinc-800/50 w-full flex justify-between items-center text-[8px] font-mono text-zinc-500 uppercase tracking-tighter">
-                    <span>{badge.date}</span>
-                    <ExternalLink size={10} className="group-hover:text-orange-500" />
-                  </div>
-                </motion.a>
-              ))}
-            </div>
+
+            {/* Issuer filter tabs */}
+            {!badgesLoading && issuers.length > 1 && (
+              <div className="flex flex-wrap gap-2 mb-10">
+                {issuers.map(issuer => (
+                  <button
+                    key={issuer}
+                    onClick={() => setFilter(issuer)}
+                    className={`px-4 py-1.5 rounded-full text-xs font-mono border transition-all ${
+                      filter === issuer
+                        ? 'bg-orange-500 border-orange-500 text-white'
+                        : 'border-zinc-300 dark:border-zinc-700 text-zinc-500 hover:border-orange-500/50 hover:text-orange-500'
+                    }`}
+                  >
+                    {issuer === 'All' ? `All (${badges.length})` : issuer}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Loading skeleton */}
+            {badgesLoading && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <div key={i} className="h-52 rounded-[2rem] bg-zinc-100 dark:bg-zinc-800 animate-pulse" />
+                ))}
+              </div>
+            )}
+
+            {/* Badge grid */}
+            {!badgesLoading && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {filteredBadges.map((badge: any, i: number) => (
+                  <motion.a
+                    key={badge.id}
+                    href={badge.credlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: Math.min(i * 0.03, 0.5) }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="relative p-5 rounded-[2rem] border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 backdrop-blur-sm group flex flex-col items-center text-center overflow-hidden hover:border-orange-500/40 transition-all shadow-sm"
+                  >
+                    {/* Level badge */}
+                    {badge.level && (
+                      <span className="absolute top-3 right-3 text-[8px] font-mono px-1.5 py-0.5 rounded-full bg-orange-500/10 text-orange-500 border border-orange-500/20 uppercase">
+                        {badge.level}
+                      </span>
+                    )}
+
+                    <div className="relative w-20 h-20 mb-3 grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110">
+                      <img src={badge.image} alt={badge.name} className="w-full h-full object-contain" />
+                    </div>
+
+                    <h4 className="text-[10px] font-bold dark:text-zinc-300 leading-tight mb-1 uppercase tracking-tight line-clamp-3 group-hover:text-orange-500 transition-colors">
+                      {badge.name}
+                    </h4>
+
+                    <p className="text-[8px] font-mono text-zinc-400 mb-2 truncate w-full">{badge.issuer}</p>
+
+                    <div className="mt-auto pt-2 border-t border-zinc-100 dark:border-zinc-800/50 w-full flex justify-between items-center text-[8px] font-mono text-zinc-500">
+                      <span>{badge.issuedAt}</span>
+                      <ExternalLink size={9} className="group-hover:text-orange-500 shrink-0" />
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
