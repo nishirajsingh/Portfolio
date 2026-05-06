@@ -172,6 +172,13 @@
       "issuer": "Google Cloud",
       "date": "Apr 2025",
       "image": ""
+    },
+    {
+      "title": "AWS Student Community Day Participant",
+      "issuer": "AWS Community",
+      "date": "Jan 2026",
+      "image": "https://images.credly.com/size/680x680/images/346dd316-2bda-4465-a6d8-537b3ffa2920/blob",
+      "id": "badge-1775744070985"
     }
   ],
   "projects": [

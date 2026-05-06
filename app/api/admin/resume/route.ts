@@ -22,10 +22,10 @@ export async function POST(req: NextRequest) {
   const uploadDir = path.join(process.cwd(), 'public', 'resume')
   await mkdir(uploadDir, { recursive: true })
 
-  const filepath = path.join(uploadDir, 'nishiraj_resume.pdf')
+  const filepath = path.join(uploadDir, 'resume.pdf')
   await writeFile(filepath, buffer)
 
-  const url = '/resume/nishiraj_resume.pdf'
+  const url = '/resume/resume.pdf'
   const data = readData() as any
   data.resume = url
   writeData(data)
