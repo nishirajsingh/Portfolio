@@ -1,6 +1,58 @@
 {
   "certifications": [
     {
+      "title": "Computer Networks and Internet Protocol",
+      "issuer": "NPTEL",
+      "date": "May 2026",
+      "expiry": "",
+      "credentialId": "NPTEL26CS35S2485401858",
+      "link": "https://nptel.ac.in/noc/E_Certificate/NOC26CS35S248540185804256586",
+      "status": "completed",
+      "skills": [
+        "Computer Networks",
+        "Internet Protocol"
+      ],
+      "image": "/images/certs/1781070499041-NOC26CS35S248540185804256586_page-0001.jpg",
+      "id": "cert-1781070521415"
+    },
+    {
+      "title": "AWS Ai Practitioner Challenge",
+      "issuer": "Udacity",
+      "date": "May 2026",
+      "expiry": "",
+      "credentialId": "",
+      "link": "https://www.udacity.com/certificate/e/6bbeb78c-2d85-11f1-b619-d79a0d0094c6",
+      "status": "completed",
+      "skills": [
+        "AWS",
+        "AI",
+        "Amazon Web Services"
+      ],
+      "image": "/images/certs/1781070816340-AWS-Ai-Practicinor-Udacity_page-0001.jpg",
+      "id": "cert-1781070818547"
+    },
+    {
+      "title": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "date": "Mar 2026",
+      "expiry": "Mar 2029",
+      "credentialId": "fa6d0f7fadf34a4d959f9caacb2ae92a",
+      "link": "https://www.credly.com/badges/fa2c1e8c-2676-4ba9-8c96-dcb5b347b93a",
+      "status": "completed",
+      "skills": [
+        "Amazon Web Services",
+        "AWS",
+        "AWS Certification",
+        "AWS Cloud",
+        "Cloud Certification",
+        "Cloud Computing",
+        "Cloud Platform",
+        "Cloud Services"
+      ],
+      "image": "/images/certs/1781070052742-AWS-Cloud-Practitioner-cert.jpg",
+      "id": "cert-1781070060529"
+    },
+    {
       "title": "India AI Impact Buildathon",
       "issuer": "HCL GUVI",
       "date": "FEB 2026",
