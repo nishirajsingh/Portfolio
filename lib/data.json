@@ -235,6 +235,21 @@
   ],
   "projects": [
     {
+      "title": "Studio Namma",
+      "description": "It's a website of Studio Namma Made using HTML, CSS and JS.",
+      "tech": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "icon": "Code",
+      "status": "Live",
+      "size": "medium",
+      "liveUrl": "https://nishirajsingh.github.io/StudioNamma/",
+      "githubUrl": "https://github.com/nishirajsingh/StudioNamma/",
+      "id": "proj-1788285654162"
+    },
+    {
       "title": "Smart Waste Management System",
       "description": "A Django based basic web app for waste management.",
       "tech": [
@@ -299,18 +314,17 @@
     },
     {
       "id": "proj-4",
-      "title": "Analytics Dashboard",
-      "description": "Real-time data visualization platform with predictive AI-powered reporting insights.",
+      "title": "Dashboard",
+      "description": "A Simple Dashboard made using pure CSS.",
       "tech": [
-        "Next.js",
-        "PostgreSQL",
-        "Redis"
+        "HTML",
+        "CSS"
       ],
       "icon": "Sparkles",
-      "status": "Coming Soon",
+      "status": "Live",
       "size": "medium",
-      "liveUrl": "",
-      "githubUrl": ""
+      "liveUrl": "https://nishirajsingh.github.io/dashboard-demo/",
+      "githubUrl": "https://github.com/nishirajsingh/dashboard-demo/"
     }
   ],
   "events": [
